@@ -30,7 +30,7 @@ export function PortalDashboard({ project }: PortalDashboardProps) {
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6">
           <div>
             <h1 className="font-heading text-lg font-bold text-navy">
-              Countertop<span className="text-gold"> Revolution</span>
+              Counter<span className="text-gold"> Revolution</span>
             </h1>
             <p className="text-xs text-muted-foreground">Project Tracker</p>
           </div>

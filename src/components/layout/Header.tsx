@@ -24,7 +24,7 @@ export function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <span className="font-heading text-xl font-bold text-navy">
-            Countertop<span className="text-gold"> Revolution</span>
+            Counter<span className="text-gold"> Revolution</span>
           </span>
         </Link>
 
