@@ -31,7 +31,7 @@ export function Breadcrumbs() {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: process.env.NEXT_PUBLIC_SITE_URL || "https://countertoprevolution.com",
+        item: process.env.NEXT_PUBLIC_SITE_URL || "https://counterrevolution.com",
       },
       ...breadcrumbs.map((crumb, i) => ({
         "@type": "ListItem",
@@ -40,7 +40,7 @@ export function Breadcrumbs() {
         ...(crumb.isLast
           ? {}
           : {
-              item: `${process.env.NEXT_PUBLIC_SITE_URL || "https://countertoprevolution.com"}${crumb.href}`,
+              item: `${process.env.NEXT_PUBLIC_SITE_URL || "https://counterrevolution.com"}${crumb.href}`,
             }),
       })),
     ],

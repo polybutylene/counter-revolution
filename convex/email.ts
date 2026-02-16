@@ -23,7 +23,7 @@ export const sendLeadNotification = action({
     if (!notificationEmail) return;
 
     await resend.emails.send({
-      from: "Countertop Revolution <noreply@countertoprevolution.com>",
+      from: "Counter Revolution <noreply@counterrevolution.com>",
       to: [notificationEmail],
       subject: `New Estimate Lead: ${args.leadName} — ${args.projectType}`,
       html: `
@@ -53,13 +53,13 @@ export const sendEstimateConfirmation = action({
   },
   handler: async (ctx, args) => {
     await resend.emails.send({
-      from: "Countertop Revolution <noreply@countertoprevolution.com>",
+      from: "Counter Revolution <noreply@counterrevolution.com>",
       to: [args.customerEmail],
-      subject: "Your Countertop Estimate from Countertop Revolution",
+      subject: "Your Estimate from Counter Revolution",
       html: `
         <div style="max-width:600px;margin:0 auto;font-family:Arial,sans-serif">
           <div style="background:#1B3A5C;padding:24px;text-align:center">
-            <h1 style="color:#fff;margin:0">Countertop <span style="color:#C9942E">Revolution</span></h1>
+            <h1 style="color:#fff;margin:0">Counter <span style="color:#C9942E">Revolution</span></h1>
           </div>
           <div style="padding:24px">
             <p>Hi ${args.customerName},</p>
@@ -70,11 +70,11 @@ export const sendEstimateConfirmation = action({
               <p style="font-size:14px;color:#666;margin:0">Material: ${args.materialPreference}</p>
             </div>
             <p>This is a ballpark estimate. A member of our team will contact you within 24 hours to discuss your project in detail and schedule a free in-home measurement.</p>
-            <p>In the meantime, feel free to <a href="https://countertoprevolution.com/portfolio" style="color:#C9942E">browse our portfolio</a> or <a href="https://countertoprevolution.com/materials" style="color:#C9942E">explore materials</a>.</p>
-            <p>Best regards,<br>The Countertop Revolution Team</p>
+            <p>In the meantime, feel free to <a href="https://counterrevolution.com/portfolio" style="color:#C9942E">browse our portfolio</a> or <a href="https://counterrevolution.com/materials" style="color:#C9942E">explore materials</a>.</p>
+            <p>Best regards,<br>The Counter Revolution Team</p>
           </div>
           <div style="background:#f5f5f5;padding:16px;text-align:center;font-size:12px;color:#999">
-            <p>Countertop Revolution · Panama City, FL · (850) 000-0000</p>
+            <p>Counter Revolution · Panama City, FL · (850) 000-0000</p>
           </div>
         </div>
       `,
@@ -89,19 +89,19 @@ export const sendContactConfirmation = action({
   },
   handler: async (ctx, args) => {
     await resend.emails.send({
-      from: "Countertop Revolution <noreply@countertoprevolution.com>",
+      from: "Counter Revolution <noreply@counterrevolution.com>",
       to: [args.customerEmail],
-      subject: "We received your message — Countertop Revolution",
+      subject: "We received your message — Counter Revolution",
       html: `
         <div style="max-width:600px;margin:0 auto;font-family:Arial,sans-serif">
           <div style="background:#1B3A5C;padding:24px;text-align:center">
-            <h1 style="color:#fff;margin:0">Countertop <span style="color:#C9942E">Revolution</span></h1>
+            <h1 style="color:#fff;margin:0">Counter <span style="color:#C9942E">Revolution</span></h1>
           </div>
           <div style="padding:24px">
             <p>Hi ${args.customerName},</p>
             <p>Thank you for reaching out! We've received your message and a member of our team will get back to you within 24 hours.</p>
             <p>If you need immediate assistance, call us at <a href="tel:+18500000000" style="color:#C9942E">(850) 000-0000</a>.</p>
-            <p>Best regards,<br>The Countertop Revolution Team</p>
+            <p>Best regards,<br>The Counter Revolution Team</p>
           </div>
         </div>
       `,

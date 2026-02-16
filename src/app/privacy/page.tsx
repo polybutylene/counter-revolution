@@ -3,7 +3,7 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Countertop Revolution privacy policy. How we collect, use, and protect your information.",
+  description: "Counter Revolution privacy policy. How we collect, use, and protect your information.",
 };
 
 export default function PrivacyPage() {
@@ -34,8 +34,8 @@ export default function PrivacyPage() {
         <h2 className="font-heading text-xl font-semibold text-navy">Contact</h2>
         <p>
           If you have questions about this privacy policy, contact us at{" "}
-          <a href="mailto:info@countertoprevolution.com" className="text-gold hover:underline">
-            info@countertoprevolution.com
+          <a href="mailto:info@counterrevolution.com" className="text-gold hover:underline">
+            info@counterrevolution.com
           </a>
           .
         </p>

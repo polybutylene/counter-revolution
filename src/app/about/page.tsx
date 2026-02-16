@@ -7,7 +7,7 @@ import { Shield, Heart, Ruler, Award, Users, MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Learn about Countertop Revolution — locally owned countertop fabrication and installation serving Bay County, FL. Our story, team, and commitment to quality.",
+  description: "Learn about Counter Revolution — locally owned countertop fabrication and installation serving Bay County, FL. Our story, team, and commitment to quality.",
 };
 
 const VALUES = [
@@ -34,7 +34,7 @@ const VALUES = [
 ];
 
 const TEAM = [
-  { name: "Owner", role: "Founder & Lead Fabricator", bio: "With years of experience in the stone industry, our founder brought Countertop Revolution to Bay County with a vision: make premium countertops accessible to every homeowner." },
+  { name: "Owner", role: "Founder & Lead Fabricator", bio: "With years of experience in the stone industry, our founder brought Counter Revolution to Bay County with a vision: make premium countertops accessible to every homeowner." },
   { name: "Lead Installer", role: "Installation Specialist", bio: "Our lead installer brings precision and care to every project, ensuring your countertops are perfectly level, seamless, and beautiful." },
 ];
 
@@ -49,7 +49,7 @@ export default function AboutPage() {
       <section className="bg-navy py-12 sm:py-16">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <h1 className="font-heading text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-            About Countertop Revolution
+            About Counter Revolution
           </h1>
           <p className="mt-4 text-lg text-gray-300">
             Locally owned. Quality driven. Proudly serving Bay County and the Emerald Coast.
@@ -64,13 +64,13 @@ export default function AboutPage() {
             <SectionHeading label="Our Story" title="Built on a Simple Belief" align="left" />
             <div className="mt-6 space-y-4 text-muted-foreground">
               <p>
-                Countertop Revolution was born from a straightforward idea: Bay County homeowners
+                Counter Revolution was born from a straightforward idea: Bay County homeowners
                 deserve a countertop company that combines premium craftsmanship with modern
                 convenience. No more guessing about prices. No more weeks of waiting for a callback.
                 No more settling for less than exceptional.
               </p>
               <p>
-                When we acquired Countertop Revolution, we saw an opportunity to bring a fresh
+                When we acquired Counter Revolution, we saw an opportunity to bring a fresh
                 approach to an industry that has been stuck in the past. We invested in digital
                 tools like our Instant Estimator and Project Tracker so you can get transparent
                 pricing and real-time updates on your project — a first for Bay County.

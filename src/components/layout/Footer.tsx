@@ -37,7 +37,7 @@ export function Footer() {
           {/* Contact Info */}
           <div>
             <h3 className="font-heading text-lg font-bold text-white">
-              Countertop<span className="text-gold"> Revolution</span>
+              Counter<span className="text-gold"> Revolution</span>
             </h3>
             <p className="mt-3 text-sm text-gray-300">
               Premium countertop fabrication &amp; installation in Bay County, Florida.
@@ -54,11 +54,11 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:info@countertoprevolution.com"
+                  href="mailto:info@counterrevolution.com"
                   className="flex items-center gap-2 text-sm text-gray-300 transition-colors hover:text-gold"
                 >
                   <Mail className="h-4 w-4 shrink-0" />
-                  info@countertoprevolution.com
+                  info@counterrevolution.com
                 </a>
               </li>
               <li className="flex items-start gap-2 text-sm text-gray-300">
@@ -150,7 +150,7 @@ export function Footer() {
           </div>
           <div className="flex items-center gap-4 text-xs text-gray-400">
             <Link href="/privacy" className="hover:text-gray-200">Privacy Policy</Link>
-            <span>&copy; {new Date().getFullYear()} Countertop Revolution. All rights reserved.</span>
+            <span>&copy; {new Date().getFullYear()} Counter Revolution. All rights reserved.</span>
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@ const PLACEHOLDER_POST = {
     "Both are excellent choices, but your lifestyle, budget, and kitchen habits should guide the decision.",
   category: "buying-guide",
   publishDate: "2026-02-01",
-  author: { name: "Countertop Revolution" },
+  author: { name: "Counter Revolution" },
   estimatedReadTime: 6,
 };
 
@@ -352,7 +352,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
       <CTABanner
         headline="Ready to Start Your Project?"
-        description="Get a free estimate and see why Bay County trusts Countertop Revolution."
+        description="Get a free estimate and see why Bay County trusts Counter Revolution."
         primaryCTA={{
           label: "Get a Free Estimate",
           href: "/estimate",

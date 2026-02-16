@@ -28,7 +28,7 @@ const PLACEHOLDER_POSTS = [
     excerpt: "Both are excellent choices, but your lifestyle, budget, and kitchen habits should guide the decision. Here's an honest comparison.",
     category: "buying-guide",
     publishDate: "2026-02-01",
-    author: { name: "Countertop Revolution" },
+    author: { name: "Counter Revolution" },
   },
   {
     _id: "2",
@@ -37,7 +37,7 @@ const PLACEHOLDER_POSTS = [
     excerpt: "A transparent look at what you should expect to pay for granite, quartz, marble, and quartzite countertops in the Bay County area.",
     category: "buying-guide",
     publishDate: "2026-01-25",
-    author: { name: "Countertop Revolution" },
+    author: { name: "Counter Revolution" },
   },
   {
     _id: "3",
@@ -46,7 +46,7 @@ const PLACEHOLDER_POSTS = [
     excerpt: "Living on the Emerald Coast means extra considerations for stone selection. Salt air, moisture, and heat all play a role.",
     category: "material-education",
     publishDate: "2026-01-18",
-    author: { name: "Countertop Revolution" },
+    author: { name: "Counter Revolution" },
   },
   {
     _id: "4",
@@ -55,7 +55,7 @@ const PLACEHOLDER_POSTS = [
     excerpt: "From bold veining to warm neutrals, discover the styles that are shaping Bay County kitchens this year.",
     category: "design-inspiration",
     publishDate: "2026-01-12",
-    author: { name: "Countertop Revolution" },
+    author: { name: "Counter Revolution" },
   },
   {
     _id: "5",
@@ -64,7 +64,7 @@ const PLACEHOLDER_POSTS = [
     excerpt: "Quartz is low-maintenance, but a few simple habits will keep yours looking new for years. Here's the complete guide.",
     category: "maintenance-care",
     publishDate: "2026-01-08",
-    author: { name: "Countertop Revolution" },
+    author: { name: "Counter Revolution" },
   },
   {
     _id: "6",
@@ -73,7 +73,7 @@ const PLACEHOLDER_POSTS = [
     excerpt: "We're excited to announce our expanded showroom with more slabs, design consultation, and the same friendly local service you know.",
     category: "company-news",
     publishDate: "2026-01-05",
-    author: { name: "Countertop Revolution" },
+    author: { name: "Counter Revolution" },
   },
   {
     _id: "7",
@@ -82,7 +82,7 @@ const PLACEHOLDER_POSTS = [
     excerpt: "Both offer stunning natural beauty, but they perform very differently. Learn which is right for your Florida home.",
     category: "material-education",
     publishDate: "2025-12-28",
-    author: { name: "Countertop Revolution" },
+    author: { name: "Counter Revolution" },
   },
   {
     _id: "8",
@@ -91,7 +91,7 @@ const PLACEHOLDER_POSTS = [
     excerpt: "Don't let a compact kitchen limit your style. These design tips help you get the most from every square inch.",
     category: "design-inspiration",
     publishDate: "2025-12-20",
-    author: { name: "Countertop Revolution" },
+    author: { name: "Counter Revolution" },
   },
 ];
 
@@ -214,7 +214,7 @@ export default function BlogPage() {
 
       <CTABanner
         headline="Ready to Start Your Project?"
-        description="Get a free estimate and see why Bay County trusts Countertop Revolution."
+        description="Get a free estimate and see why Bay County trusts Counter Revolution."
         primaryCTA={{ label: "Get Your Free Estimate", href: "/estimate" }}
       />
     </>

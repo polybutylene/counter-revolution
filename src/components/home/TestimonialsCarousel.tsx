@@ -16,9 +16,9 @@ interface TestimonialItem {
 }
 
 const PLACEHOLDER_TESTIMONIALS: TestimonialItem[] = [
-  { _id: "1", name: "Sarah M.", quote: "Countertop Revolution transformed our kitchen completely. The quartz countertops are absolutely stunning and the installation was done in just one day. Highly recommend!", rating: 5, projectType: "Kitchen Countertops", city: "Panama City" },
-  { _id: "2", name: "David & Lisa R.", quote: "We shopped around for months and nobody came close to the quality and pricing Countertop Revolution offered. Our granite countertops exceeded every expectation.", rating: 5, projectType: "Kitchen Countertops", city: "Lynn Haven" },
-  { _id: "3", name: "Mike T.", quote: "As a general contractor, I need reliable partners. Countertop Revolution delivers on time, every time. Their fabrication quality is the best in Bay County.", rating: 5, projectType: "Commercial", city: "Panama City Beach" },
+  { _id: "1", name: "Sarah M.", quote: "Counter Revolution transformed our kitchen completely. The quartz countertops are absolutely stunning and the installation was done in just one day. Highly recommend!", rating: 5, projectType: "Kitchen Countertops", city: "Panama City" },
+  { _id: "2", name: "David & Lisa R.", quote: "We shopped around for months and nobody came close to the quality and pricing Counter Revolution offered. Our granite countertops exceeded every expectation.", rating: 5, projectType: "Kitchen Countertops", city: "Lynn Haven" },
+  { _id: "3", name: "Mike T.", quote: "As a general contractor, I need reliable partners. Counter Revolution delivers on time, every time. Their fabrication quality is the best in Bay County.", rating: 5, projectType: "Commercial", city: "Panama City Beach" },
   { _id: "4", name: "Jennifer K.", quote: "The team was so helpful with material selection. They steered me toward quartzite for my outdoor kitchen and it's been perfect through two Florida summers.", rating: 5, projectType: "Outdoor Kitchen", city: "30A" },
 ];
 

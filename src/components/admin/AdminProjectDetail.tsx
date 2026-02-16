@@ -163,7 +163,7 @@ function AdminMessageThread({ projectId }: { projectId: Id<"projects"> }) {
       await sendMessage({
         projectId,
         senderType: "team",
-        senderName: "Countertop Revolution",
+        senderName: "Counter Revolution",
         body: body.trim(),
       });
       setBody("");

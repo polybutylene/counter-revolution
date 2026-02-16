@@ -33,9 +33,9 @@ const SERVICES = [
 ];
 
 const PLACEHOLDER_TESTIMONIALS = [
-  { _id: "1", name: "Sarah M.", quote: "Countertop Revolution transformed our kitchen completely. The quartz countertops are absolutely stunning and the installation was done in just one day.", rating: 5, projectType: "Kitchen Countertops", city: "" },
+  { _id: "1", name: "Sarah M.", quote: "Counter Revolution transformed our kitchen completely. The quartz countertops are absolutely stunning and the installation was done in just one day.", rating: 5, projectType: "Kitchen Countertops", city: "" },
   { _id: "2", name: "David & Lisa R.", quote: "We shopped around for months and nobody came close to the quality and pricing. Our granite countertops exceeded every expectation.", rating: 5, projectType: "Kitchen Countertops", city: "" },
-  { _id: "3", name: "Mike T.", quote: "As a general contractor, I need reliable partners. Countertop Revolution delivers on time, every time. Fabrication quality is the best in Bay County.", rating: 5, projectType: "Commercial", city: "" },
+  { _id: "3", name: "Mike T.", quote: "As a general contractor, I need reliable partners. Counter Revolution delivers on time, every time. Fabrication quality is the best in Bay County.", rating: 5, projectType: "Commercial", city: "" },
 ];
 
 const SERVICE_AREAS_DATA: Record<
@@ -49,7 +49,7 @@ const SERVICE_AREAS_DATA: Record<
   "panama-city": {
     cityName: "Panama City",
     intro: [
-      "Panama City is the vibrant heart of Bay County, home to the historic St. Andrews waterfront, the marina district, and neighborhoods like Millville and Cove. Countertop Revolution has been serving Panama City homeowners and businesses with premium granite, quartz, marble, and quartzite fabrication for years.",
+      "Panama City is the vibrant heart of Bay County, home to the historic St. Andrews waterfront, the marina district, and neighborhoods like Millville and Cove. Counter Revolution has been serving Panama City homeowners and businesses with premium granite, quartz, marble, and quartzite fabrication for years.",
       "Whether you're near the downtown Government Center, the Cove neighborhood, or along 23rd Street, we bring our showroom expertise and professional installation directly to your door. Free measurements, transparent pricing, and 7–10 day turnaround make your kitchen or bathroom remodel stress-free.",
     ],
     mapCenter: { lat: 30.1588, lng: -85.6602 },
@@ -66,7 +66,7 @@ const SERVICE_AREAS_DATA: Record<
     cityName: "Lynn Haven",
     intro: [
       "Lynn Haven offers a tight-knit community feel just minutes from Panama City. With areas like Mosley, Hiland Park, and the expanding North Bay corridor, more families are investing in kitchen and bathroom upgrades that add value and style.",
-      "Countertop Revolution serves Lynn Haven from our central Bay County location. We're your neighbors—quick to schedule measurements, flexible on material selection, and committed to clean, professional installations. Many of our happiest customers are right here in Lynn Haven.",
+      "Counter Revolution serves Lynn Haven from our central Bay County location. We're your neighbors—quick to schedule measurements, flexible on material selection, and committed to clean, professional installations. Many of our happiest customers are right here in Lynn Haven.",
     ],
     mapCenter: { lat: 30.2455, lng: -85.6483 },
   },
@@ -82,7 +82,7 @@ const SERVICE_AREAS_DATA: Record<
     cityName: "Springfield",
     intro: [
       "Springfield is a historic community nestled between Panama City and Lynn Haven, with easy access to both. Residents in Springfield enjoy a small-town feel while staying close to shopping, schools, and the waterfront.",
-      "Countertop Revolution provides full-service countertop fabrication and installation throughout Springfield. From cozy bungalows to modern builds, we help you choose the right stone—granite, quartz, marble, or quartzite—and install it with precision. Free estimates and friendly, local service.",
+      "Counter Revolution provides full-service countertop fabrication and installation throughout Springfield. From cozy bungalows to modern builds, we help you choose the right stone—granite, quartz, marble, or quartzite—and install it with precision. Free estimates and friendly, local service.",
     ],
     mapCenter: { lat: 30.1533, lng: -85.6114 },
   },
@@ -98,7 +98,7 @@ const SERVICE_AREAS_DATA: Record<
     cityName: "Mexico Beach",
     intro: [
       "Mexico Beach is the 'Sugar Sands of the Forgotten Coast' — a quiet, charming beach community east of Panama City. Residents and second-home owners here value quality craftsmanship and materials that can handle the Gulf Coast climate.",
-      "Countertop Revolution extends our service area to Mexico Beach, bringing showroom-quality fabrication and installation to your doorstep. We help you choose stone that stands up to salt air, humidity, and the occasional storm—and we deliver with the same reliability you expect from a local team.",
+      "Counter Revolution extends our service area to Mexico Beach, bringing showroom-quality fabrication and installation to your doorstep. We help you choose stone that stands up to salt air, humidity, and the occasional storm—and we deliver with the same reliability you expect from a local team.",
     ],
     mapCenter: { lat: 29.948, lng: -85.42 },
   },
@@ -106,7 +106,7 @@ const SERVICE_AREAS_DATA: Record<
     cityName: "30A",
     intro: [
       "Scenic Highway 30A winds through some of Florida's most sought-after beach communities—Seaside, Rosemary Beach, Alys Beach, WaterColor, Dune Allen, Blue Mountain, and more. These distinctive villages blend coastal charm with high-end design.",
-      "Countertop Revolution serves the entire 30A corridor with premium stone fabrication and installation. Whether you're building a vacation retreat or a forever home, we help you select materials that match the sophistication of your community. Marble, quartzite, and quartz are popular choices here—and we deliver with white-glove service.",
+      "Counter Revolution serves the entire 30A corridor with premium stone fabrication and installation. Whether you're building a vacation retreat or a forever home, we help you select materials that match the sophistication of your community. Marble, quartzite, and quartz are popular choices here—and we deliver with white-glove service.",
     ],
     mapCenter: { lat: 30.361, lng: -86.211 },
   },
@@ -293,7 +293,7 @@ export default function ServiceAreaPage({ params }: ServiceAreaPageProps) {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title={`Countertop Revolution service area - ${area.cityName}, FL`}
+                title={`Counter Revolution service area - ${area.cityName}, FL`}
               />
             </div>
           </AnimateInView>

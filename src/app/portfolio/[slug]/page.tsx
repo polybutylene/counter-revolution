@@ -45,7 +45,7 @@ const PROJECTS_DATA: Record<string, ProjectData> = {
     customerTestimonial: {
       name: "Sarah M.",
       quote:
-        "Countertop Revolution exceeded our expectations. The granite is gorgeous and the installation was flawless. They were professional, on time, and left everything spotless.",
+        "Counter Revolution exceeded our expectations. The granite is gorgeous and the installation was flawless. They were professional, on time, and left everything spotless.",
       rating: 5,
     },
   },
@@ -110,7 +110,7 @@ const PROJECTS_DATA: Record<string, ProjectData> = {
     ],
     customerTestimonial: {
       name: "David R.",
-      quote: "The marble is absolutely breathtaking. Yes, it requires some care, but it's worth it. Countertop Revolution guided us through the whole process.",
+      quote: "The marble is absolutely breathtaking. Yes, it requires some care, but it's worth it. Counter Revolution guided us through the whole process.",
       rating: 5,
     },
   },

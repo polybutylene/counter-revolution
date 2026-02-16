@@ -22,11 +22,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://countertoprevolution.com"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://counterrevolution.com"
   ),
   title: {
-    default: "Countertop Revolution | Bay County's Trusted Countertop Experts",
-    template: "%s | Countertop Revolution",
+    default: "Counter Revolution | Bay County's Trusted Countertop Experts",
+    template: "%s | Counter Revolution",
   },
   description:
     "Premium granite, quartz, marble & quartzite countertop fabrication and installation in Bay County, FL. Free estimates, 7-10 day turnaround. Locally owned.",
@@ -45,8 +45,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Countertop Revolution",
-    title: "Countertop Revolution | Bay County's Trusted Countertop Experts",
+    siteName: "Counter Revolution",
+    title: "Counter Revolution | Bay County's Trusted Countertop Experts",
     description:
       "Premium granite, quartz, marble & quartzite countertop fabrication and installation in Bay County, FL.",
   },

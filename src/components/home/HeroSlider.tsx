@@ -45,7 +45,7 @@ export function HeroSlider({
               beforeImage={beforeImage}
               afterImage={afterImage}
               beforeAlt="Kitchen before countertop renovation"
-              afterAlt="Kitchen after countertop installation by Countertop Revolution"
+              afterAlt="Kitchen after countertop installation by Counter Revolution"
             />
           </div>
         </div>

@@ -15,13 +15,13 @@ export function LocalBusinessJsonLd() {
   const data = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://countertoprevolution.com",
-    name: "Countertop Revolution",
+    "@id": "https://counterrevolution.com",
+    name: "Counter Revolution",
     description:
       "Premium granite, quartz, marble & quartzite countertop fabrication and installation in Bay County, FL.",
-    url: "https://countertoprevolution.com",
+    url: "https://counterrevolution.com",
     telephone: "+18500000000",
-    email: "info@countertoprevolution.com",
+    email: "info@counterrevolution.com",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Panama City",
@@ -81,7 +81,7 @@ export function ServiceJsonLd({
     url,
     provider: {
       "@type": "LocalBusiness",
-      name: "Countertop Revolution",
+      name: "Counter Revolution",
     },
     areaServed: {
       "@type": "State",
@@ -121,7 +121,7 @@ export function ArticleJsonLd({
     },
     publisher: {
       "@type": "Organization",
-      name: "Countertop Revolution",
+      name: "Counter Revolution",
     },
   };
 

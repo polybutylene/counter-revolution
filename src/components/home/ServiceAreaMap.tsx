@@ -36,7 +36,7 @@ export function ServiceAreaMap() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Countertop Revolution service area map"
+                title="Counter Revolution service area map"
               />
             </div>
           </AnimateInView>
