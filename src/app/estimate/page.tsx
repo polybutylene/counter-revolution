@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { EstimatorWizard } from "@/components/estimator/EstimatorWizard";
+import dynamic from "next/dynamic";
+
+const EstimatorWizard = dynamic(
+  () => import("@/components/estimator/EstimatorWizard").then((m) => m.EstimatorWizard),
+  { ssr: false, loading: () => <div className="mx-auto h-96 max-w-3xl animate-pulse rounded-xl bg-warm-medium" /> }
+);
 import { Shield } from "lucide-react";
 
 export const metadata: Metadata = {

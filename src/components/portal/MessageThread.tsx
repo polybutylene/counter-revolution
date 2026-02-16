@@ -59,7 +59,7 @@ export function MessageThread({ projectId, customerName }: MessageThreadProps) {
             No messages yet. Send a message to start the conversation.
           </div>
         )}
-        {messages?.map((msg) => {
+        {messages?.map((msg: any) => {
           const isTeam = msg.senderType === "team";
           return (
             <div

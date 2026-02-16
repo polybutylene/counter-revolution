@@ -97,7 +97,7 @@ const SERVICE_AREAS_DATA: Record<
   "mexico-beach": {
     cityName: "Mexico Beach",
     intro: [
-      "Mexico Beach is the "Sugar Sands of the Forgotten Coast"—a quiet, charming beach community east of Panama City. Residents and second-home owners here value quality craftsmanship and materials that can handle the Gulf Coast climate.",
+      "Mexico Beach is the 'Sugar Sands of the Forgotten Coast' — a quiet, charming beach community east of Panama City. Residents and second-home owners here value quality craftsmanship and materials that can handle the Gulf Coast climate.",
       "Countertop Revolution extends our service area to Mexico Beach, bringing showroom-quality fabrication and installation to your doorstep. We help you choose stone that stands up to salt air, humidity, and the occasional storm—and we deliver with the same reliability you expect from a local team.",
     ],
     mapCenter: { lat: 29.948, lng: -85.42 },

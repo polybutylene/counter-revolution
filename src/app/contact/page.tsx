@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
-import { ContactForm } from "@/components/contact/ContactForm";
+
+const ContactForm = dynamic(
+  () => import("@/components/contact/ContactForm").then((m) => m.ContactForm),
+  { ssr: false, loading: () => <div className="h-96 animate-pulse rounded-xl bg-warm-medium" /> }
+);
 import { Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
