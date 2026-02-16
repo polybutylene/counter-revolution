@@ -14,8 +14,8 @@ interface HeroSliderProps {
 export function HeroSlider({
   headline = "Bay County's Most Trusted Countertop Experts",
   subheadline = "Granite · Quartz · Marble · Quartzite — Fabricated & Installed by Local Craftsmen",
-  beforeImage = "/images/hero-before.jpg",
-  afterImage = "/images/hero-after.jpg",
+  beforeImage = "/images/hero-before.png",
+  afterImage = "/images/hero-after.png",
 }: HeroSliderProps) {
   return (
     <section className="relative bg-navy">
