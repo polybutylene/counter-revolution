@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useMutation } from "convex/react";
-import { api } from "../../../convex/_generated/api";
 import { Button } from "@/components/ui/button";
 import { ProgressBar } from "./ProgressBar";
 import { StepProjectType } from "./StepProjectType";
@@ -13,6 +11,7 @@ import { StepEdgeProfile } from "./StepEdgeProfile";
 import { StepContact } from "./StepContact";
 import { StepResult } from "./StepResult";
 import { calculateEstimate } from "@/lib/estimator/calculate";
+import { submitEstimateLead } from "@/lib/convex/submitLead";
 import { trackEvent } from "@/components/shared/TrackEvent";
 import { ArrowLeft, ArrowRight, Loader2 } from "lucide-react";
 import type { EstimatorFormData, EstimateResult, ProjectType, MaterialPreference, EdgeProfile } from "@/types/estimator";
@@ -43,8 +42,6 @@ export function EstimatorWizard() {
     timeline: "" as any,
     notes: "",
   });
-
-  const submitEstimate = useMutation(api.estimator.submitEstimate);
 
   const updateField = (field: string, value: unknown) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -93,7 +90,7 @@ export function EstimatorWizard() {
       const estimate = calculateEstimate(formData);
       setResult(estimate);
 
-      await submitEstimate({
+      submitEstimateLead({
         ...formData,
         estimateLow: estimate.low,
         estimateHigh: estimate.high,
@@ -108,7 +105,7 @@ export function EstimatorWizard() {
 
       setStep(6);
     } catch (error) {
-      console.error("Failed to submit estimate:", error);
+      console.error("Failed to calculate estimate:", error);
       const estimate = calculateEstimate(formData);
       setResult(estimate);
       setStep(6);

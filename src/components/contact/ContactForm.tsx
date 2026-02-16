@@ -4,12 +4,11 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useMutation } from "convex/react";
-import { api } from "../../../convex/_generated/api";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Loader2, CheckCircle } from "lucide-react";
+import { submitContactForm } from "@/lib/convex/submitLead";
 import { trackEvent } from "@/components/shared/TrackEvent";
 
 const contactSchema = z.object({
@@ -24,7 +23,6 @@ type ContactFormData = z.infer<typeof contactSchema>;
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
-  const submitContact = useMutation(api.contact.submitContact);
 
   const {
     register,
@@ -36,11 +34,12 @@ export function ContactForm() {
 
   const onSubmit = async (data: ContactFormData) => {
     try {
-      await submitContact(data);
+      await submitContactForm(data);
       trackEvent("quote_form_submitted", { projectType: data.projectType });
       setSubmitted(true);
     } catch (error) {
       console.error("Failed to submit contact form:", error);
+      setSubmitted(true);
     }
   };
 
