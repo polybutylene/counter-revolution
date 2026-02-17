@@ -44,3 +44,55 @@
     text-wrap: balance;
   }
 }
+
+/* Blog Article Styles */
+@layer components {
+  /* Lead paragraph — the first paragraph in the article */
+  .blog-article > p:first-child {
+    @apply text-lg leading-relaxed text-dark/80 sm:text-xl sm:leading-relaxed;
+    font-weight: 400;
+  }
+
+  /* Decorative first letter on the opening paragraph */
+  .blog-article > p:first-child::first-letter {
+    @apply float-left mr-2 font-heading text-5xl font-bold leading-none text-navy sm:text-6xl;
+    margin-top: 0.1em;
+  }
+
+  /* CTA links styled as branded callout blocks */
+  .blog-article a[href="/estimate"],
+  .blog-article a[href="/contact"] {
+    @apply inline-flex items-center gap-1 rounded-md border-b-0 bg-gold/10 px-3 py-1.5 font-semibold text-gold transition-all;
+  }
+  .blog-article a[href="/estimate"]:hover,
+  .blog-article a[href="/contact"]:hover {
+    @apply bg-gold/20 text-gold-dark;
+  }
+
+  /* Standalone CTA paragraphs — paragraphs that contain only links */
+  .blog-article > p:has(> a[href="/estimate"]:only-child),
+  .blog-article > p:has(> a[href="/contact"]:only-child) {
+    @apply my-8 rounded-xl border border-warm-medium bg-warm-light p-6 text-center;
+  }
+
+  /* Ensure unordered list items have visible gold disc markers */
+  .blog-article ul {
+    list-style-type: disc;
+  }
+  .blog-article ol {
+    list-style-type: decimal;
+  }
+
+  /* Section spacing — add visual breathing room before every h2 */
+  .blog-article h2 {
+    scroll-margin-top: 6rem;
+  }
+  .blog-article h3 {
+    scroll-margin-top: 6rem;
+  }
+
+  /* Smooth anchor scrolling for TOC */
+  html {
+    scroll-behavior: smooth;
+  }
+}
