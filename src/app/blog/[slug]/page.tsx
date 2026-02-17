@@ -6,59 +6,8 @@ import { CTABanner } from "@/components/shared/CTABanner";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Share2, Facebook, Twitter, Linkedin, Bookmark } from "lucide-react";
-
-const BLOG_SLUGS = [
-  "granite-vs-quartz",
-  "countertop-cost-guide",
-  "gulf-coast-humidity-countertops",
-  "kitchen-countertop-trends-2026",
-  "quartz-maintenance-guide",
-  "new-showroom-panama-city",
-  "marble-vs-quartzite",
-  "small-kitchen-countertop-ideas",
-];
-
-const PLACEHOLDER_POST = {
-  _id: "1",
-  title: "Granite vs. Quartz: Which Is Right for Your Bay County Kitchen?",
-  slug: "granite-vs-quartz",
-  excerpt:
-    "Both are excellent choices, but your lifestyle, budget, and kitchen habits should guide the decision.",
-  category: "buying-guide",
-  publishDate: "2026-02-01",
-  author: { name: "Counter Revolution" },
-  estimatedReadTime: 6,
-};
-
-const TOC_ITEMS = [
-  { id: "intro", label: "Introduction" },
-  { id: "granite-overview", label: "Granite Overview" },
-  { id: "quartz-overview", label: "Quartz Overview" },
-  { id: "comparison", label: "Side-by-Side Comparison" },
-  { id: "bay-county", label: "Considerations for Bay County" },
-  { id: "conclusion", label: "Conclusion" },
-];
-
-const RELATED_POSTS = [
-  {
-    _id: "2",
-    title: "How Much Do Countertops Cost in Northwest Florida?",
-    slug: "countertop-cost-guide",
-    category: "buying-guide",
-  },
-  {
-    _id: "3",
-    title: "How Gulf Coast Humidity Affects Your Countertop Choice",
-    slug: "gulf-coast-humidity-countertops",
-    category: "material-education",
-  },
-  {
-    _id: "7",
-    title: "Marble vs. Quartzite: Understanding the Difference",
-    slug: "marble-vs-quartzite",
-    category: "material-education",
-  },
-];
+import { BLOG_POSTS, getBlogPostBySlug, getRelatedPosts } from "@/data/blog/posts";
+import { getBlogContent } from "@/data/blog/content";
 
 function formatCategoryLabel(category: string): string {
   return category
@@ -74,20 +23,26 @@ interface BlogPostPageProps {
 export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
+  const post = getBlogPostBySlug(params.slug);
+  if (!post) {
+    return { title: "Post Not Found" };
+  }
   return {
-    title: PLACEHOLDER_POST.title,
-    description: PLACEHOLDER_POST.excerpt,
+    title: post.title,
+    description: post.excerpt,
   };
 }
 
 export function generateStaticParams() {
-  return BLOG_SLUGS.map((slug) => ({ slug }));
+  return BLOG_POSTS.map((post) => ({ slug: post.slug }));
 }
 
 export default function BlogPostPage({ params }: BlogPostPageProps) {
-  if (!BLOG_SLUGS.includes(params.slug)) notFound();
+  const post = getBlogPostBySlug(params.slug);
+  if (!post) notFound();
 
-  const post = { ...PLACEHOLDER_POST, slug: params.slug };
+  const content = getBlogContent(params.slug);
+  const relatedPosts = getRelatedPosts(params.slug, 3);
 
   return (
     <>
@@ -136,108 +91,20 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               </div>
             </header>
 
-            {/* Article Body - Placeholder Rich Text */}
-            <div className="prose prose-lg mt-10 max-w-none font-body">
-              <h2 id="intro" className="font-heading text-2xl font-bold text-navy">
-                Introduction
-              </h2>
-              <p className="mt-3 text-dark">
-                Choosing between granite and quartz is one of the most common
-                decisions homeowners face when remodeling their kitchen. Both
-                materials offer durability, beauty, and a wide range of colors
-                and patterns. In this guide, we&apos;ll break down the key
-                differences so you can make an informed choice for your Bay
-                County home.
-              </p>
-
-              <h2
-                id="granite-overview"
-                className="mt-10 font-heading text-2xl font-bold text-navy"
-              >
-                Granite Overview
-              </h2>
-              <p className="mt-3 text-dark">
-                Granite is a natural stone quarried from the earth. Each slab
-                is unique, with natural variations in color, veining, and pattern
-                that create a one-of-a-kind look. Granite has been a top choice
-                for decades because of its hardness, heat resistance, and
-                timeless appeal.
-              </p>
-
-              <h2
-                id="quartz-overview"
-                className="mt-10 font-heading text-2xl font-bold text-navy"
-              >
-                Quartz Overview
-              </h2>
-              <p className="mt-3 text-dark">
-                Quartz countertops are engineered stone—a blend of natural quartz
-                crystals and resins. This process creates a non-porous surface
-                that doesn&apos;t require sealing and is highly resistant to
-                stains and bacteria. Quartz offers more consistent color and
-                pattern than natural stone.
-              </p>
-
-              <h2
-                id="comparison"
-                className="mt-10 font-heading text-2xl font-bold text-navy"
-              >
-                Side-by-Side Comparison
-              </h2>
-              <p className="mt-3 text-dark">
-                Here&apos;s a quick comparison to help you decide:
-              </p>
-              <ul className="mt-4 list-disc space-y-2 pl-6 text-dark">
-                <li>
-                  <strong>Maintenance:</strong> Quartz requires no sealing;
-                  granite benefits from annual sealing.
-                </li>
-                <li>
-                  <strong>Heat resistance:</strong> Granite handles hot pans
-                  better; quartz can be damaged by extreme heat.
-                </li>
-                <li>
-                  <strong>Stain resistance:</strong> Quartz is non-porous;
-                  granite is porous but sealable.
-                </li>
-                <li>
-                  <strong>Appearance:</strong> Granite offers natural variation;
-                  quartz offers consistency and designer colors.
-                </li>
-                <li>
-                  <strong>Cost:</strong> Both are in a similar price range; your
-                  specific slab choice will drive the final price.
-                </li>
-              </ul>
-
-              <h2
-                id="bay-county"
-                className="mt-10 font-heading text-2xl font-bold text-navy"
-              >
-                Considerations for Bay County
-              </h2>
-              <p className="mt-3 text-dark">
-                Living on the Gulf Coast brings humidity, salt air, and
-                occasional storm exposure. Both granite and quartz perform well
-                here. Quartz&apos;s non-porous nature can be an advantage in
-                high-humidity areas, while granite&apos;s natural durability
-                has proven itself in coastal homes for decades.
-              </p>
-
-              <h2
-                id="conclusion"
-                className="mt-10 font-heading text-2xl font-bold text-navy"
-              >
-                Conclusion
-              </h2>
-              <p className="mt-3 text-dark">
-                There&apos;s no single &quot;right&quot; answer—your choice
-                depends on your style preferences, maintenance tolerance, and
-                how you use your kitchen. Visit our showroom to see both
-                materials in person and get personalized recommendations for
-                your project.
-              </p>
-            </div>
+            {/* Article Body */}
+            {content ? (
+              <div
+                className="prose prose-lg mt-10 max-w-none font-body prose-headings:font-heading prose-headings:text-navy prose-p:text-dark prose-a:text-gold prose-a:no-underline hover:prose-a:underline prose-strong:text-dark prose-li:text-dark"
+                dangerouslySetInnerHTML={{ __html: content.html }}
+              />
+            ) : (
+              <div className="prose prose-lg mt-10 max-w-none font-body">
+                <p className="text-dark">
+                  This article is coming soon. Check back shortly for the full
+                  content.
+                </p>
+              </div>
+            )}
 
             {/* Social Sharing */}
             <div className="mt-12 flex flex-wrap items-center gap-4 border-t border-warm-medium pt-8">
@@ -275,59 +142,63 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           </article>
 
           {/* Table of Contents Sidebar */}
-          <aside className="mt-12 lg:mt-0">
-            <nav
-              className="sticky top-24 rounded-xl border border-warm-medium bg-warm-light p-5"
-              aria-label="Table of contents"
-            >
-              <h3 className="font-heading text-sm font-semibold uppercase tracking-wider text-gold">
-                On this page
-              </h3>
-              <ul className="mt-4 space-y-2">
-                {TOC_ITEMS.map((item) => (
-                  <li key={item.id}>
-                    <a
-                      href={`#${item.id}`}
-                      className="text-sm text-dark transition-colors hover:text-gold"
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </aside>
+          {content && content.toc.length > 0 && (
+            <aside className="mt-12 lg:mt-0">
+              <nav
+                className="sticky top-24 rounded-xl border border-warm-medium bg-warm-light p-5"
+                aria-label="Table of contents"
+              >
+                <h3 className="font-heading text-sm font-semibold uppercase tracking-wider text-gold">
+                  On this page
+                </h3>
+                <ul className="mt-4 space-y-2">
+                  {content.toc.map((item) => (
+                    <li key={item.id}>
+                      <a
+                        href={`#${item.id}`}
+                        className="text-sm text-dark transition-colors hover:text-gold"
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </aside>
+          )}
         </div>
 
         {/* Related Posts */}
-        <section className="mt-16 border-t border-warm-medium pt-12">
-          <h2 className="font-heading text-2xl font-bold text-navy">
-            Related Posts
-          </h2>
-          <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {RELATED_POSTS.map((related) => (
-              <Link key={related._id} href={`/blog/${related.slug}`}>
-                <Card className="h-full overflow-hidden transition-shadow hover:shadow-md">
-                  <div className="aspect-[16/9] bg-warm-light">
-                    <div className="flex h-full items-center justify-center">
-                      <span className="font-heading text-3xl font-bold text-navy/10">
-                        CR
-                      </span>
+        {relatedPosts.length > 0 && (
+          <section className="mt-16 border-t border-warm-medium pt-12">
+            <h2 className="font-heading text-2xl font-bold text-navy">
+              Related Posts
+            </h2>
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {relatedPosts.map((related) => (
+                <Link key={related._id} href={`/blog/${related.slug}`}>
+                  <Card className="h-full overflow-hidden transition-shadow hover:shadow-md">
+                    <div className="aspect-[16/9] bg-warm-light">
+                      <div className="flex h-full items-center justify-center">
+                        <span className="font-heading text-3xl font-bold text-navy/10">
+                          CR
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  <CardContent className="p-4">
-                    <Badge variant="secondary" className="text-xs capitalize">
-                      {formatCategoryLabel(related.category)}
-                    </Badge>
-                    <h3 className="mt-2 font-heading font-semibold text-navy line-clamp-2">
-                      {related.title}
-                    </h3>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
-          </div>
-        </section>
+                    <CardContent className="p-4">
+                      <Badge variant="secondary" className="text-xs capitalize">
+                        {formatCategoryLabel(related.category)}
+                      </Badge>
+                      <h3 className="mt-2 font-heading font-semibold text-navy line-clamp-2">
+                        {related.title}
+                      </h3>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Author Bio */}
         <section className="mt-12">
@@ -352,7 +223,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
       <CTABanner
         headline="Ready to Start Your Project?"
-        description="Get a free estimate and see why Bay County trusts Counter Revolution."
+        description="Get a free estimate and see why Bay County trusts Countertop Revolution."
         primaryCTA={{
           label: "Get a Free Estimate",
           href: "/estimate",

@@ -4,6 +4,7 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 import { AnimateInView } from "@/components/shared/AnimateInView";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Calendar } from "lucide-react";
+import { BLOG_POSTS } from "@/data/blog/posts";
 
 interface BlogPreviewPost {
   _id: string;
@@ -16,39 +17,12 @@ interface BlogPreviewPost {
   author?: { name: string };
 }
 
-const PLACEHOLDER_POSTS: BlogPreviewPost[] = [
-  {
-    _id: "1",
-    title: "Granite vs. Quartz: Which Is Right for Your Bay County Kitchen?",
-    slug: "granite-vs-quartz",
-    excerpt: "Both are excellent choices, but your lifestyle, budget, and kitchen habits should guide the decision. Here's an honest comparison.",
-    category: "buying-guide",
-    publishDate: "2026-02-01",
-  },
-  {
-    _id: "2",
-    title: "How Much Do Countertops Cost in Northwest Florida?",
-    slug: "countertop-cost-guide",
-    excerpt: "A transparent look at what you should expect to pay for granite, quartz, marble, and quartzite countertops in the Bay County area.",
-    category: "buying-guide",
-    publishDate: "2026-01-25",
-  },
-  {
-    _id: "3",
-    title: "How Gulf Coast Humidity Affects Your Countertop Choice",
-    slug: "gulf-coast-humidity-countertops",
-    excerpt: "Living on the Emerald Coast means extra considerations for stone selection. Salt air, moisture, and heat all play a role.",
-    category: "material-education",
-    publishDate: "2026-01-18",
-  },
-];
-
 interface BlogPreviewProps {
   posts?: BlogPreviewPost[];
 }
 
 export function BlogPreview({ posts }: BlogPreviewProps) {
-  const displayPosts = posts && posts.length > 0 ? posts : PLACEHOLDER_POSTS;
+  const displayPosts = posts && posts.length > 0 ? posts : BLOG_POSTS;
 
   return (
     <section className="py-16 sm:py-20">

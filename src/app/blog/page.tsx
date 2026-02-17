@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, ArrowRight, Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { BLOG_POSTS } from "@/data/blog/posts";
 
 const BLOG_CATEGORIES = [
   { id: "all", label: "All" },
@@ -19,81 +20,6 @@ const BLOG_CATEGORIES = [
   { id: "maintenance-care", label: "Maintenance & Care" },
   { id: "company-news", label: "Company News" },
 ] as const;
-
-const PLACEHOLDER_POSTS = [
-  {
-    _id: "1",
-    title: "Granite vs. Quartz: Which Is Right for Your Bay County Kitchen?",
-    slug: "granite-vs-quartz",
-    excerpt: "Both are excellent choices, but your lifestyle, budget, and kitchen habits should guide the decision. Here's an honest comparison.",
-    category: "buying-guide",
-    publishDate: "2026-02-01",
-    author: { name: "Counter Revolution" },
-  },
-  {
-    _id: "2",
-    title: "How Much Do Countertops Cost in Northwest Florida?",
-    slug: "countertop-cost-guide",
-    excerpt: "A transparent look at what you should expect to pay for granite, quartz, marble, and quartzite countertops in the Bay County area.",
-    category: "buying-guide",
-    publishDate: "2026-01-25",
-    author: { name: "Counter Revolution" },
-  },
-  {
-    _id: "3",
-    title: "How Gulf Coast Humidity Affects Your Countertop Choice",
-    slug: "gulf-coast-humidity-countertops",
-    excerpt: "Living on the Emerald Coast means extra considerations for stone selection. Salt air, moisture, and heat all play a role.",
-    category: "material-education",
-    publishDate: "2026-01-18",
-    author: { name: "Counter Revolution" },
-  },
-  {
-    _id: "4",
-    title: "5 Kitchen Countertop Trends for 2026",
-    slug: "kitchen-countertop-trends-2026",
-    excerpt: "From bold veining to warm neutrals, discover the styles that are shaping Bay County kitchens this year.",
-    category: "design-inspiration",
-    publishDate: "2026-01-12",
-    author: { name: "Counter Revolution" },
-  },
-  {
-    _id: "5",
-    title: "How to Clean and Maintain Quartz Countertops",
-    slug: "quartz-maintenance-guide",
-    excerpt: "Quartz is low-maintenance, but a few simple habits will keep yours looking new for years. Here's the complete guide.",
-    category: "maintenance-care",
-    publishDate: "2026-01-08",
-    author: { name: "Counter Revolution" },
-  },
-  {
-    _id: "6",
-    title: "Our New Showroom Opens in Panama City",
-    slug: "new-showroom-panama-city",
-    excerpt: "We're excited to announce our expanded showroom with more slabs, design consultation, and the same friendly local service you know.",
-    category: "company-news",
-    publishDate: "2026-01-05",
-    author: { name: "Counter Revolution" },
-  },
-  {
-    _id: "7",
-    title: "Marble vs. Quartzite: Understanding the Difference",
-    slug: "marble-vs-quartzite",
-    excerpt: "Both offer stunning natural beauty, but they perform very differently. Learn which is right for your Florida home.",
-    category: "material-education",
-    publishDate: "2025-12-28",
-    author: { name: "Counter Revolution" },
-  },
-  {
-    _id: "8",
-    title: "Small Kitchen Countertop Ideas That Maximize Space",
-    slug: "small-kitchen-countertop-ideas",
-    excerpt: "Don't let a compact kitchen limit your style. These design tips help you get the most from every square inch.",
-    category: "design-inspiration",
-    publishDate: "2025-12-20",
-    author: { name: "Counter Revolution" },
-  },
-];
 
 function formatCategoryLabel(category: string): string {
   return category
@@ -107,7 +33,7 @@ export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredPosts = useMemo(() => {
-    return PLACEHOLDER_POSTS.filter((post) => {
+    return BLOG_POSTS.filter((post) => {
       const matchesCategory =
         selectedCategory === "all" || post.category === selectedCategory;
       const matchesSearch =
@@ -214,7 +140,7 @@ export default function BlogPage() {
 
       <CTABanner
         headline="Ready to Start Your Project?"
-        description="Get a free estimate and see why Bay County trusts Counter Revolution."
+        description="Get a free estimate and see why Bay County trusts Countertop Revolution."
         primaryCTA={{ label: "Get Your Free Estimate", href: "/estimate" }}
       />
     </>
