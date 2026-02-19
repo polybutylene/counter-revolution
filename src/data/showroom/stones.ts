@@ -1,0 +1,460 @@
+import { Stone } from './types';
+
+export const stones: Stone[] = [
+  {
+    id: 'white-ice-granite',
+    name: 'White Ice Granite',
+    materialType: 'granite',
+    colorFamily: ['white', 'gray'],
+    description: 'A crisp white granite with subtle gray and silver mineral flecks. Clean and bright — our most popular kitchen choice.',
+    teamNote: 'This is our #1 seller for a reason. It pairs beautifully with both white and dark cabinetry, hides water spots well, and the natural pattern means every slab is unique. We always recommend seeing your specific slab before fabrication.',
+    specs: {
+      origin: 'Brazil',
+      thicknessOptions: ['2cm', '3cm'],
+      finishOptions: ['Polished', 'Honed'],
+      durability: 4,
+      maintenance: 'Low',
+      heatResistance: 4,
+      stainResistance: 3,
+      scratchResistance: 4,
+    },
+    bestFor: ['kitchen', 'bathroom'],
+    priceTier: '$$',
+    pricePerSqFtRange: [42, 58],
+    images: {
+      thumbnail: '/showroom/textures/white-ice-granite-thumb.webp',
+      slab: '/showroom/slabs/white-ice-granite-full.webp',
+      closeup: '/showroom/slabs/white-ice-granite-detail.webp',
+      texture: '/showroom/textures/white-ice-granite-tile.webp',
+    },
+    popularity: 1,
+    tags: ['popular', 'staff-pick', 'florida-kitchen'],
+  },
+  {
+    id: 'alaska-white-granite',
+    name: 'Alaska White Granite',
+    materialType: 'granite',
+    colorFamily: ['white', 'gray'],
+    description: 'Soft white base with gentle gray veining and warm undertones. Versatile and elegant for any kitchen style.',
+    teamNote: 'A great alternative to marble if you want that light, airy look but need granite durability. The warm undertones make it feel less sterile than pure white options. Very forgiving for everyday kitchen use.',
+    specs: {
+      origin: 'India',
+      thicknessOptions: ['2cm', '3cm'],
+      finishOptions: ['Polished', 'Honed'],
+      durability: 4,
+      maintenance: 'Low',
+      heatResistance: 4,
+      stainResistance: 4,
+      scratchResistance: 4,
+    },
+    bestFor: ['kitchen', 'bathroom'],
+    priceTier: '$$',
+    pricePerSqFtRange: [38, 52],
+    images: {
+      thumbnail: '/showroom/textures/alaska-white-granite-thumb.webp',
+      slab: '/showroom/slabs/alaska-white-granite-full.webp',
+      closeup: '/showroom/slabs/alaska-white-granite-detail.webp',
+      texture: '/showroom/textures/alaska-white-granite-tile.webp',
+    },
+    popularity: 3,
+    tags: ['popular', 'florida-kitchen'],
+  },
+  {
+    id: 'steel-gray-granite',
+    name: 'Steel Gray Granite',
+    materialType: 'granite',
+    colorFamily: ['gray', 'black'],
+    description: 'Consistent dark gray with subtle silver mineral sparkle. Modern and sophisticated with minimal pattern variation.',
+    teamNote: 'If you want a sleek, modern kitchen this is your stone. It\'s incredibly consistent slab-to-slab, which is rare for natural stone. Pair it with white cabinets for a striking contrast.',
+    specs: {
+      origin: 'India',
+      thicknessOptions: ['2cm', '3cm'],
+      finishOptions: ['Polished', 'Honed', 'Leathered'],
+      durability: 5,
+      maintenance: 'Low',
+      heatResistance: 5,
+      stainResistance: 4,
+      scratchResistance: 5,
+    },
+    bestFor: ['kitchen', 'bathroom', 'outdoor'],
+    priceTier: '$$',
+    pricePerSqFtRange: [40, 55],
+    images: {
+      thumbnail: '/showroom/textures/steel-gray-granite-thumb.webp',
+      slab: '/showroom/slabs/steel-gray-granite-full.webp',
+      closeup: '/showroom/slabs/steel-gray-granite-detail.webp',
+      texture: '/showroom/textures/steel-gray-granite-tile.webp',
+    },
+    popularity: 5,
+    tags: ['modern', 'outdoor-rated'],
+  },
+  {
+    id: 'calacatta-laza-quartz',
+    name: 'Calacatta Laza Quartz',
+    materialType: 'quartz',
+    colorFamily: ['white', 'gold'],
+    description: 'Engineered quartz with dramatic warm gray and gold veining on a bright white base. The marble look without the maintenance.',
+    teamNote: 'Our top quartz pick for kitchens. You get the Calacatta marble aesthetic but with zero sealing, zero staining, and zero worry. The gold veining catches light beautifully. Customers who see this installed always ask "is that marble?"',
+    specs: {
+      origin: 'Engineered',
+      thicknessOptions: ['2cm', '3cm'],
+      finishOptions: ['Polished', 'Honed'],
+      durability: 5,
+      maintenance: 'Low',
+      heatResistance: 3,
+      stainResistance: 5,
+      scratchResistance: 4,
+    },
+    bestFor: ['kitchen', 'bathroom'],
+    priceTier: '$$$',
+    pricePerSqFtRange: [55, 75],
+    images: {
+      thumbnail: '/showroom/textures/calacatta-laza-quartz-thumb.webp',
+      slab: '/showroom/slabs/calacatta-laza-quartz-full.webp',
+      closeup: '/showroom/slabs/calacatta-laza-quartz-detail.webp',
+      texture: '/showroom/textures/calacatta-laza-quartz-tile.webp',
+    },
+    popularity: 2,
+    tags: ['popular', 'staff-pick', 'low-maintenance'],
+  },
+  {
+    id: 'carrara-mist-quartz',
+    name: 'Carrara Mist Quartz',
+    materialType: 'quartz',
+    colorFamily: ['white', 'gray'],
+    description: 'Soft Carrara marble-inspired quartz with delicate gray veining. Timeless and understated elegance.',
+    teamNote: 'Perfect for homeowners who love Carrara marble but live in a busy household. This handles coffee spills, red wine, and lemon juice without batting an eye. The veining is subtle enough to be a background player.',
+    specs: {
+      origin: 'Engineered',
+      thicknessOptions: ['2cm', '3cm'],
+      finishOptions: ['Polished', 'Honed'],
+      durability: 5,
+      maintenance: 'Low',
+      heatResistance: 3,
+      stainResistance: 5,
+      scratchResistance: 4,
+    },
+    bestFor: ['kitchen', 'bathroom'],
+    priceTier: '$$',
+    pricePerSqFtRange: [45, 62],
+    images: {
+      thumbnail: '/showroom/textures/carrara-mist-quartz-thumb.webp',
+      slab: '/showroom/slabs/carrara-mist-quartz-full.webp',
+      closeup: '/showroom/slabs/carrara-mist-quartz-detail.webp',
+      texture: '/showroom/textures/carrara-mist-quartz-tile.webp',
+    },
+    popularity: 4,
+    tags: ['popular', 'low-maintenance', 'florida-kitchen'],
+  },
+  {
+    id: 'midnight-black-quartz',
+    name: 'Midnight Black Quartz',
+    materialType: 'quartz',
+    colorFamily: ['black'],
+    description: 'Deep, uniform black with fine micro-sparkle. Bold and dramatic for contemporary spaces.',
+    teamNote: 'A showstopper in modern kitchens. Fair warning: it shows fingerprints and water spots more than lighter colors, but a quick wipe and it looks spectacular. We recommend pairing with lighter cabinetry to balance the room.',
+    specs: {
+      origin: 'Engineered',
+      thicknessOptions: ['2cm', '3cm'],
+      finishOptions: ['Polished', 'Honed'],
+      durability: 5,
+      maintenance: 'Medium',
+      heatResistance: 3,
+      stainResistance: 5,
+      scratchResistance: 4,
+    },
+    bestFor: ['kitchen', 'bathroom'],
+    priceTier: '$$',
+    pricePerSqFtRange: [42, 58],
+    images: {
+      thumbnail: '/showroom/textures/midnight-black-quartz-thumb.webp',
+      slab: '/showroom/slabs/midnight-black-quartz-full.webp',
+      closeup: '/showroom/slabs/midnight-black-quartz-detail.webp',
+      texture: '/showroom/textures/midnight-black-quartz-tile.webp',
+    },
+    popularity: 8,
+    tags: ['modern', 'bold'],
+  },
+  {
+    id: 'calacatta-gold-marble',
+    name: 'Calacatta Gold Marble',
+    materialType: 'marble',
+    colorFamily: ['white', 'gold'],
+    description: 'Luxurious Italian marble with striking gold and gray veining on a warm white base. The pinnacle of natural stone elegance.',
+    teamNote: 'This is the Rolls Royce of countertop materials. Every slab is a work of art. Yes, it needs sealing and more careful maintenance than granite or quartz, but for the right customer, nothing else compares. We handle the sealing at installation.',
+    specs: {
+      origin: 'Italy',
+      thicknessOptions: ['2cm', '3cm'],
+      finishOptions: ['Polished', 'Honed'],
+      durability: 2,
+      maintenance: 'High',
+      heatResistance: 3,
+      stainResistance: 2,
+      scratchResistance: 2,
+    },
+    bestFor: ['kitchen', 'bathroom'],
+    priceTier: '$$$$',
+    pricePerSqFtRange: [85, 120],
+    images: {
+      thumbnail: '/showroom/textures/calacatta-gold-marble-thumb.webp',
+      slab: '/showroom/slabs/calacatta-gold-marble-full.webp',
+      closeup: '/showroom/slabs/calacatta-gold-marble-detail.webp',
+      texture: '/showroom/textures/calacatta-gold-marble-tile.webp',
+    },
+    popularity: 6,
+    tags: ['luxury', 'staff-pick'],
+  },
+  {
+    id: 'emperador-dark-marble',
+    name: 'Emperador Dark Marble',
+    materialType: 'marble',
+    colorFamily: ['brown'],
+    description: 'Rich chocolate brown marble with golden veining throughout. Warm, inviting, and distinguished.',
+    teamNote: 'Emperador adds incredible warmth to a bathroom vanity or bar area. The dark color hides wear beautifully and develops a gorgeous patina over time. Not our first recommendation for a heavy-use kitchen, but incredible in the right application.',
+    specs: {
+      origin: 'Spain',
+      thicknessOptions: ['2cm', '3cm'],
+      finishOptions: ['Polished', 'Honed'],
+      durability: 3,
+      maintenance: 'Medium',
+      heatResistance: 3,
+      stainResistance: 2,
+      scratchResistance: 3,
+    },
+    bestFor: ['bathroom', 'kitchen'],
+    priceTier: '$$$',
+    pricePerSqFtRange: [60, 80],
+    images: {
+      thumbnail: '/showroom/textures/emperador-dark-marble-thumb.webp',
+      slab: '/showroom/slabs/emperador-dark-marble-full.webp',
+      closeup: '/showroom/slabs/emperador-dark-marble-detail.webp',
+      texture: '/showroom/textures/emperador-dark-marble-tile.webp',
+    },
+    popularity: 9,
+    tags: ['warm', 'classic'],
+  },
+  {
+    id: 'taj-mahal-quartzite',
+    name: 'Taj Mahal Quartzite',
+    materialType: 'quartzite',
+    colorFamily: ['white', 'gold'],
+    description: 'Creamy white quartzite with soft gold and taupe veining. Combines marble aesthetics with granite-level durability.',
+    teamNote: 'The best of both worlds — it looks like a warm marble but is nearly as tough as granite. This is what we recommend to customers who fall in love with marble but want peace of mind. It handles a busy Florida kitchen beautifully.',
+    specs: {
+      origin: 'Brazil',
+      thicknessOptions: ['2cm', '3cm'],
+      finishOptions: ['Polished', 'Honed', 'Leathered'],
+      durability: 5,
+      maintenance: 'Low',
+      heatResistance: 5,
+      stainResistance: 4,
+      scratchResistance: 5,
+    },
+    bestFor: ['kitchen', 'bathroom', 'outdoor'],
+    priceTier: '$$$$',
+    pricePerSqFtRange: [75, 100],
+    images: {
+      thumbnail: '/showroom/textures/taj-mahal-quartzite-thumb.webp',
+      slab: '/showroom/slabs/taj-mahal-quartzite-full.webp',
+      closeup: '/showroom/slabs/taj-mahal-quartzite-detail.webp',
+      texture: '/showroom/textures/taj-mahal-quartzite-tile.webp',
+    },
+    popularity: 7,
+    tags: ['staff-pick', 'durable', 'florida-kitchen'],
+  },
+  {
+    id: 'super-white-quartzite',
+    name: 'Super White Quartzite',
+    materialType: 'quartzite',
+    colorFamily: ['white', 'gray'],
+    description: 'Dramatic white quartzite with bold gray movement. Often mistaken for Calacatta marble but significantly harder.',
+    teamNote: 'If a customer shows us a marble kitchen on Pinterest and asks "can I have this but bullet-proof?", this is what we pull out. The veining is dramatic and every slab tells a different story. It\'s an investment, but it\'ll outlast you.',
+    specs: {
+      origin: 'Brazil',
+      thicknessOptions: ['3cm'],
+      finishOptions: ['Polished', 'Honed'],
+      durability: 5,
+      maintenance: 'Low',
+      heatResistance: 5,
+      stainResistance: 4,
+      scratchResistance: 5,
+    },
+    bestFor: ['kitchen', 'bathroom'],
+    priceTier: '$$$$',
+    pricePerSqFtRange: [80, 110],
+    images: {
+      thumbnail: '/showroom/textures/super-white-quartzite-thumb.webp',
+      slab: '/showroom/slabs/super-white-quartzite-full.webp',
+      closeup: '/showroom/slabs/super-white-quartzite-detail.webp',
+      texture: '/showroom/textures/super-white-quartzite-tile.webp',
+    },
+    popularity: 10,
+    tags: ['luxury', 'durable', 'bold'],
+  },
+  {
+    id: 'blue-bahia-granite',
+    name: 'Blue Bahia Granite',
+    materialType: 'granite',
+    colorFamily: ['blue'],
+    description: 'Exotic deep blue granite with shimmering sodalite crystals. A rare, statement-making natural stone.',
+    teamNote: 'This is the stone that makes people stop in their tracks. It\'s rare, it\'s bold, and it turns a kitchen island into a conversation piece. We don\'t keep this in stock — it\'s a special order — but it\'s worth the wait for the right project.',
+    specs: {
+      origin: 'Brazil',
+      thicknessOptions: ['3cm'],
+      finishOptions: ['Polished'],
+      durability: 4,
+      maintenance: 'Low',
+      heatResistance: 4,
+      stainResistance: 3,
+      scratchResistance: 4,
+    },
+    bestFor: ['kitchen', 'bathroom'],
+    priceTier: '$$$$',
+    pricePerSqFtRange: [90, 130],
+    images: {
+      thumbnail: '/showroom/textures/blue-bahia-granite-thumb.webp',
+      slab: '/showroom/slabs/blue-bahia-granite-full.webp',
+      closeup: '/showroom/slabs/blue-bahia-granite-detail.webp',
+      texture: '/showroom/textures/blue-bahia-granite-tile.webp',
+    },
+    popularity: 12,
+    tags: ['exotic', 'bold', 'luxury'],
+  },
+  {
+    id: 'colonial-gold-granite',
+    name: 'Colonial Gold Granite',
+    materialType: 'granite',
+    colorFamily: ['gold', 'brown'],
+    description: 'Warm gold and brown granite with cream and black mineral deposits. A classic choice that brings natural warmth to any kitchen.',
+    teamNote: 'A timeless granite that never goes out of style. It matches beautifully with oak, maple, and cherry cabinetry. This is the stone we recommend when someone wants their kitchen to feel warm and inviting without being trendy.',
+    specs: {
+      origin: 'India',
+      thicknessOptions: ['2cm', '3cm'],
+      finishOptions: ['Polished', 'Honed'],
+      durability: 4,
+      maintenance: 'Low',
+      heatResistance: 4,
+      stainResistance: 3,
+      scratchResistance: 4,
+    },
+    bestFor: ['kitchen', 'bathroom'],
+    priceTier: '$$',
+    pricePerSqFtRange: [38, 50],
+    images: {
+      thumbnail: '/showroom/textures/colonial-gold-granite-thumb.webp',
+      slab: '/showroom/slabs/colonial-gold-granite-full.webp',
+      closeup: '/showroom/slabs/colonial-gold-granite-detail.webp',
+      texture: '/showroom/textures/colonial-gold-granite-tile.webp',
+    },
+    popularity: 11,
+    tags: ['classic', 'warm', 'florida-kitchen'],
+  },
+  {
+    id: 'emerald-pearl-granite',
+    name: 'Emerald Pearl Granite',
+    materialType: 'granite',
+    colorFamily: ['green', 'black'],
+    description: 'Deep black-green granite with iridescent feldspar crystals that shimmer in the light. Dramatic and unique.',
+    teamNote: 'This stone has a personality — the crystals literally sparkle under kitchen lighting. It\'s best as a statement piece (island, bar top) rather than covering the whole kitchen. Under-cabinet LEDs make this stone sing.',
+    specs: {
+      origin: 'Norway',
+      thicknessOptions: ['3cm'],
+      finishOptions: ['Polished'],
+      durability: 5,
+      maintenance: 'Low',
+      heatResistance: 5,
+      stainResistance: 4,
+      scratchResistance: 5,
+    },
+    bestFor: ['kitchen', 'bathroom'],
+    priceTier: '$$$',
+    pricePerSqFtRange: [55, 72],
+    images: {
+      thumbnail: '/showroom/textures/emerald-pearl-granite-thumb.webp',
+      slab: '/showroom/slabs/emerald-pearl-granite-full.webp',
+      closeup: '/showroom/slabs/emerald-pearl-granite-detail.webp',
+      texture: '/showroom/textures/emerald-pearl-granite-tile.webp',
+    },
+    popularity: 13,
+    tags: ['exotic', 'bold'],
+  },
+  {
+    id: 'concrete-gray-quartz',
+    name: 'Concrete Gray Quartz',
+    materialType: 'quartz',
+    colorFamily: ['gray'],
+    description: 'Industrial-inspired uniform gray quartz with a concrete-like matte finish. Ultra-modern and minimal.',
+    teamNote: 'The go-to for modern and industrial kitchen designs. Looks incredible with flat-panel cabinets in white or matte black. If you\'re building a kitchen that could be in an architecture magazine, this is your stone.',
+    specs: {
+      origin: 'Engineered',
+      thicknessOptions: ['2cm', '3cm'],
+      finishOptions: ['Honed', 'Leathered'],
+      durability: 5,
+      maintenance: 'Low',
+      heatResistance: 3,
+      stainResistance: 5,
+      scratchResistance: 4,
+    },
+    bestFor: ['kitchen', 'bathroom'],
+    priceTier: '$$',
+    pricePerSqFtRange: [40, 55],
+    images: {
+      thumbnail: '/showroom/textures/concrete-gray-quartz-thumb.webp',
+      slab: '/showroom/slabs/concrete-gray-quartz-full.webp',
+      closeup: '/showroom/slabs/concrete-gray-quartz-detail.webp',
+      texture: '/showroom/textures/concrete-gray-quartz-tile.webp',
+    },
+    popularity: 14,
+    tags: ['modern', 'minimal'],
+  },
+];
+
+export const stoneCollections = {
+  'Most Popular in Bay County': stones.filter(s => s.tags.includes('popular')).sort((a, b) => a.popularity - b.popularity).slice(0, 6),
+  'Best for Florida Kitchens': stones.filter(s => s.tags.includes('florida-kitchen')),
+  'Staff Picks': stones.filter(s => s.tags.includes('staff-pick')),
+  'Bold & Dramatic': stones.filter(s => s.tags.includes('bold') || s.tags.includes('exotic')),
+  'Low Maintenance': stones.filter(s => s.specs.maintenance === 'Low' && s.materialType === 'quartz'),
+};
+
+export function getStoneById(id: string): Stone | undefined {
+  return stones.find(s => s.id === id);
+}
+
+export function filterStones(filters: {
+  materialType?: MaterialType[];
+  colorFamily?: ColorFamily[];
+  priceTier?: PriceTier[];
+  bestFor?: RoomType[];
+  search?: string;
+}): Stone[] {
+  let result = [...stones];
+
+  if (filters.materialType?.length) {
+    result = result.filter(s => filters.materialType!.includes(s.materialType));
+  }
+  if (filters.colorFamily?.length) {
+    result = result.filter(s => s.colorFamily.some(c => filters.colorFamily!.includes(c)));
+  }
+  if (filters.priceTier?.length) {
+    result = result.filter(s => filters.priceTier!.includes(s.priceTier));
+  }
+  if (filters.bestFor?.length) {
+    result = result.filter(s => s.bestFor.some(b => filters.bestFor!.includes(b)));
+  }
+  if (filters.search) {
+    const q = filters.search.toLowerCase();
+    result = result.filter(s =>
+      s.name.toLowerCase().includes(q) ||
+      s.description.toLowerCase().includes(q) ||
+      s.materialType.toLowerCase().includes(q)
+    );
+  }
+
+  return result;
+}
+
+type MaterialType = import('./types').MaterialType;
+type ColorFamily = import('./types').ColorFamily;
+type PriceTier = import('./types').PriceTier;
+type RoomType = import('./types').RoomType;

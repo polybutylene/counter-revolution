@@ -8,6 +8,7 @@ import { TestimonialsCarousel } from "@/components/home/TestimonialsCarousel";
 import { ServiceAreaMap } from "@/components/home/ServiceAreaMap";
 import { BlogPreview } from "@/components/home/BlogPreview";
 import { CTABanner } from "@/components/shared/CTABanner";
+import { ShowroomWidget } from "@/components/showroom/ShowroomWidget";
 
 export default function HomePage() {
   return (
@@ -16,6 +17,7 @@ export default function HomePage() {
       <TrustBar />
       <HowItWorks />
       <FeaturedProjects />
+      <ShowroomWidget />
       <EstimatorCTA />
       <MaterialsPreview />
       <TestimonialsCarousel />
