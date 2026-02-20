@@ -25,6 +25,7 @@ import {
 import { cn } from '@/lib/utils';
 import { EdgeProfilePicker } from './EdgeProfilePicker';
 import { ShareModal } from '../shared/ShareModal';
+import { StoneImage } from '../shared/StoneImage';
 import type { Stone } from '@/data/showroom/types';
 
 interface StoneDetailProps {
@@ -92,10 +93,13 @@ export function StoneDetail({
             {/* Image gallery */}
             <div className="relative bg-warm-light">
               <div className="relative aspect-square overflow-hidden">
-                <img
+                <StoneImage
+                  stoneId={stone.id}
                   src={images[activeImage].src}
                   alt={`${stone.name} — ${images[activeImage].label}`}
                   className="h-full w-full object-cover"
+                  size={512}
+                  loading="eager"
                 />
                 {/* Navigation arrows */}
                 <button
@@ -125,7 +129,7 @@ export function StoneDetail({
                     )}
                     aria-label={`View ${img.label}`}
                   >
-                    <img src={img.src} alt="" className="h-full w-full object-cover" />
+                    <StoneImage stoneId={stone.id} src={img.src} alt="" className="h-full w-full object-cover" size={128} />
                   </button>
                 ))}
               </div>

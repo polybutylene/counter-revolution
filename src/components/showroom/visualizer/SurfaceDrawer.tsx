@@ -24,6 +24,8 @@ export function SurfaceDrawer({
 }: SurfaceDrawerProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const baseImgRef = useRef<HTMLImageElement | null>(null);
+  const baseLoadedRef = useRef(false);
   const [currentPoints, setCurrentPoints] = useState<Point[]>([]);
   const [activePolygonIdx, setActivePolygonIdx] = useState(0);
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
@@ -34,6 +36,17 @@ export function SurfaceDrawer({
     return canvasSize.width / imageWidth;
   }, [canvasSize.width, imageWidth]);
 
+  // Load the base image once
+  useEffect(() => {
+    baseLoadedRef.current = false;
+    const img = new window.Image();
+    img.onload = () => {
+      baseImgRef.current = img;
+      baseLoadedRef.current = true;
+    };
+    img.src = imageSrc;
+  }, [imageSrc]);
+
   // Resize handler
   useEffect(() => {
     const container = containerRef.current;
@@ -42,137 +55,143 @@ export function SurfaceDrawer({
     const observer = new ResizeObserver(entries => {
       for (const entry of entries) {
         const w = entry.contentRect.width;
-        const aspect = imageHeight / imageWidth;
-        setCanvasSize({ width: w, height: w * aspect });
+        if (w > 0 && imageWidth > 0) {
+          const aspect = imageHeight / imageWidth;
+          setCanvasSize({ width: w, height: w * aspect });
+        }
       }
     });
-
     observer.observe(container);
     return () => observer.disconnect();
   }, [imageWidth, imageHeight]);
 
-  // Draw canvas
+  // Draw canvas whenever state changes
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    if (!baseImgRef.current || !baseLoadedRef.current) return;
+    if (canvasSize.width === 0) return;
 
     const scale = getScale();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(baseImgRef.current, 0, 0, canvasSize.width, canvasSize.height);
 
-    // Draw image
-    const img = new window.Image();
-    img.onload = () => {
-      ctx.drawImage(img, 0, 0, canvasSize.width, canvasSize.height);
+    // Draw completed polygons
+    polygons.forEach(poly => {
+      if (poly.length < 3) return;
+      ctx.beginPath();
+      ctx.moveTo(poly[0].x * scale, poly[0].y * scale);
+      for (let i = 1; i < poly.length; i++) {
+        ctx.lineTo(poly[i].x * scale, poly[i].y * scale);
+      }
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(201, 148, 46, 0.15)';
+      ctx.fill();
+      ctx.strokeStyle = '#C9942E';
+      ctx.lineWidth = 2;
+      ctx.stroke();
 
-      // Draw completed polygons
-      polygons.forEach((poly, i) => {
-        if (poly.length < 3) return;
+      poly.forEach(p => {
         ctx.beginPath();
-        ctx.moveTo(poly[0].x * scale, poly[0].y * scale);
-        poly.slice(1).forEach(p => ctx.lineTo(p.x * scale, p.y * scale));
-        ctx.closePath();
-        ctx.fillStyle = 'rgba(201, 148, 46, 0.15)';
+        ctx.arc(p.x * scale, p.y * scale, 5, 0, Math.PI * 2);
+        ctx.fillStyle = '#C9942E';
         ctx.fill();
-        ctx.strokeStyle = '#C9942E';
+        ctx.strokeStyle = '#fff';
         ctx.lineWidth = 2;
         ctx.stroke();
+      });
+    });
 
-        // Draw vertices
-        poly.forEach(p => {
-          ctx.beginPath();
-          ctx.arc(p.x * scale, p.y * scale, 5, 0, Math.PI * 2);
-          ctx.fillStyle = '#C9942E';
-          ctx.fill();
-          ctx.strokeStyle = '#fff';
-          ctx.lineWidth = 2;
-          ctx.stroke();
-        });
+    // Draw current polygon in progress
+    if (currentPoints.length > 0) {
+      ctx.beginPath();
+      ctx.moveTo(currentPoints[0].x * scale, currentPoints[0].y * scale);
+      for (let i = 1; i < currentPoints.length; i++) {
+        ctx.lineTo(currentPoints[i].x * scale, currentPoints[i].y * scale);
+      }
+
+      if (hoverPoint) {
+        ctx.lineTo(hoverPoint.x * scale, hoverPoint.y * scale);
+      }
+
+      if (currentPoints.length >= 3) {
+        ctx.fillStyle = 'rgba(27, 58, 92, 0.1)';
+        ctx.fill();
+      }
+
+      ctx.strokeStyle = '#1B3A5C';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([6, 4]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Vertices
+      currentPoints.forEach((p, i) => {
+        ctx.beginPath();
+        ctx.arc(p.x * scale, p.y * scale, i === 0 ? 7 : 5, 0, Math.PI * 2);
+        ctx.fillStyle = i === 0 ? '#1B3A5C' : '#C9942E';
+        ctx.fill();
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 2;
+        ctx.stroke();
       });
 
-      // Draw current polygon in progress
-      if (currentPoints.length > 0) {
-        ctx.beginPath();
-        ctx.moveTo(currentPoints[0].x * scale, currentPoints[0].y * scale);
-        currentPoints.slice(1).forEach(p => ctx.lineTo(p.x * scale, p.y * scale));
-
-        if (hoverPoint) {
-          ctx.lineTo(hoverPoint.x * scale, hoverPoint.y * scale);
-        }
-
-        if (currentPoints.length >= 3) {
-          ctx.fillStyle = 'rgba(27, 58, 92, 0.1)';
-          ctx.fill();
-        }
-
-        ctx.strokeStyle = '#1B3A5C';
-        ctx.lineWidth = 2;
-        ctx.setLineDash([6, 4]);
-        ctx.stroke();
-        ctx.setLineDash([]);
-
-        // Draw vertices
-        currentPoints.forEach((p, i) => {
+      // Close hint
+      if (currentPoints.length >= 3 && hoverPoint) {
+        const dist = Math.hypot(
+          (hoverPoint.x - currentPoints[0].x) * scale,
+          (hoverPoint.y - currentPoints[0].y) * scale
+        );
+        if (dist < 20) {
           ctx.beginPath();
-          ctx.arc(p.x * scale, p.y * scale, i === 0 ? 7 : 5, 0, Math.PI * 2);
-          ctx.fillStyle = i === 0 ? '#1B3A5C' : '#C9942E';
-          ctx.fill();
-          ctx.strokeStyle = '#fff';
+          ctx.arc(currentPoints[0].x * scale, currentPoints[0].y * scale, 14, 0, Math.PI * 2);
+          ctx.strokeStyle = '#1B3A5C';
           ctx.lineWidth = 2;
+          ctx.setLineDash([4, 3]);
           ctx.stroke();
-        });
-
-        // Draw close hint on first point
-        if (currentPoints.length >= 3 && hoverPoint) {
-          const dist = Math.hypot(
-            (hoverPoint.x - currentPoints[0].x) * scale,
-            (hoverPoint.y - currentPoints[0].y) * scale
-          );
-          if (dist < 15) {
-            ctx.beginPath();
-            ctx.arc(currentPoints[0].x * scale, currentPoints[0].y * scale, 12, 0, Math.PI * 2);
-            ctx.strokeStyle = '#1B3A5C';
-            ctx.lineWidth = 2;
-            ctx.stroke();
-          }
+          ctx.setLineDash([]);
         }
       }
-    };
-    img.src = imageSrc;
-  }, [imageSrc, canvasSize, polygons, currentPoints, hoverPoint, getScale]);
+    }
+  }, [canvasSize, polygons, currentPoints, hoverPoint, getScale]);
 
-  const getCanvasPoint = useCallback((e: React.MouseEvent | React.TouchEvent): Point => {
-    const canvas = canvasRef.current!;
+  // Also redraw once the image finishes loading after canvas is sized
+  useEffect(() => {
+    if (!baseLoadedRef.current) {
+      const img = new window.Image();
+      img.onload = () => {
+        baseImgRef.current = img;
+        baseLoadedRef.current = true;
+        setCanvasSize(prev => ({ ...prev })); // trigger redraw
+      };
+      img.src = imageSrc;
+    }
+  }, [imageSrc, canvasSize]);
+
+  const getCanvasPoint = useCallback((clientX: number, clientY: number): Point => {
+    const canvas = canvasRef.current;
+    if (!canvas) return { x: 0, y: 0 };
     const rect = canvas.getBoundingClientRect();
     const scale = getScale();
-
-    let clientX: number, clientY: number;
-    if ('touches' in e) {
-      clientX = e.touches[0].clientX;
-      clientY = e.touches[0].clientY;
-    } else {
-      clientX = e.clientX;
-      clientY = e.clientY;
-    }
-
     return {
       x: (clientX - rect.left) / scale,
       y: (clientY - rect.top) / scale,
     };
   }, [getScale]);
 
-  const handleCanvasClick = useCallback((e: React.MouseEvent) => {
-    const point = getCanvasPoint(e);
+  const addPoint = useCallback((clientX: number, clientY: number) => {
+    const point = getCanvasPoint(clientX, clientY);
     const scale = getScale();
 
-    // Check if clicking near first point to close polygon
+    // Check if closing the polygon
     if (currentPoints.length >= 3) {
       const dist = Math.hypot(
         (point.x - currentPoints[0].x) * scale,
         (point.y - currentPoints[0].y) * scale
       );
-      if (dist < 15) {
+      if (dist < 20) {
         const newPolygons = [...polygons];
         newPolygons[activePolygonIdx] = [...currentPoints];
         onPolygonsChange(newPolygons);
@@ -184,21 +203,35 @@ export function SurfaceDrawer({
     setCurrentPoints(prev => [...prev, point]);
   }, [getCanvasPoint, currentPoints, polygons, activePolygonIdx, onPolygonsChange, getScale]);
 
+  const handleClick = useCallback((e: React.MouseEvent) => {
+    addPoint(e.clientX, e.clientY);
+  }, [addPoint]);
+
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    e.preventDefault();
+    const touch = e.changedTouches[0];
+    if (touch) {
+      addPoint(touch.clientX, touch.clientY);
+    }
+  }, [addPoint]);
+
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (currentPoints.length > 0) {
-      setHoverPoint(getCanvasPoint(e));
+      setHoverPoint(getCanvasPoint(e.clientX, e.clientY));
     }
-  }, [currentPoints, getCanvasPoint]);
+  }, [currentPoints.length, getCanvasPoint]);
 
-  const handleUndo = () => {
+  const handleTouchMove = useCallback((e: React.TouchEvent) => {
     if (currentPoints.length > 0) {
-      setCurrentPoints(prev => prev.slice(0, -1));
+      const touch = e.touches[0];
+      if (touch) {
+        setHoverPoint(getCanvasPoint(touch.clientX, touch.clientY));
+      }
     }
-  };
+  }, [currentPoints.length, getCanvasPoint]);
 
-  const handleClearCurrent = () => {
-    setCurrentPoints([]);
-  };
+  const handleUndo = () => setCurrentPoints(prev => prev.slice(0, -1));
+  const handleClear = () => setCurrentPoints([]);
 
   const handleNewSurface = () => {
     setActivePolygonIdx(polygons.length);
@@ -214,13 +247,13 @@ export function SurfaceDrawer({
         <MousePointer2 className="h-5 w-5 shrink-0 text-navy mt-0.5" />
         <div>
           <p className="text-sm font-medium text-navy">
-            {currentPoints.length === 0 && !hasCompletedPolygons && 'Click the corners of your countertop to outline the surface'}
-            {currentPoints.length > 0 && currentPoints.length < 3 && 'Keep clicking to outline the countertop shape'}
-            {currentPoints.length >= 3 && 'Click the first point to close the shape, or keep adding points'}
-            {currentPoints.length === 0 && hasCompletedPolygons && 'Surface outlined! Apply a stone or add another surface.'}
+            {currentPoints.length === 0 && !hasCompletedPolygons && 'Tap the corners of your countertop to outline the surface'}
+            {currentPoints.length > 0 && currentPoints.length < 3 && 'Keep tapping to outline the countertop shape'}
+            {currentPoints.length >= 3 && 'Tap the first point (large dot) to close the shape, or keep adding points'}
+            {currentPoints.length === 0 && hasCompletedPolygons && 'Surface outlined! Tap "Apply Stone" or add another surface.'}
           </p>
           <p className="text-xs text-dark/50 mt-0.5">
-            Tap/click each corner. Works with L-shaped and irregular counters too.
+            Works with L-shaped and irregular counters — just outline each section separately.
           </p>
         </div>
       </div>
@@ -228,19 +261,18 @@ export function SurfaceDrawer({
       {/* Canvas */}
       <div
         ref={containerRef}
-        className="relative w-full overflow-hidden rounded-xl border border-warm-medium bg-warm-light"
+        className="relative w-full overflow-hidden rounded-xl border-2 border-navy/20 bg-warm-light"
       >
         <canvas
           ref={canvasRef}
           width={canvasSize.width}
           height={canvasSize.height}
-          onClick={handleCanvasClick}
+          onClick={handleClick}
           onMouseMove={handleMouseMove}
-          onTouchStart={(e) => {
-            e.preventDefault();
-            handleCanvasClick(e as unknown as React.MouseEvent);
-          }}
-          className="w-full cursor-crosshair touch-none"
+          onTouchEnd={handleTouchEnd}
+          onTouchMove={handleTouchMove}
+          className="w-full block cursor-crosshair touch-none"
+          style={{ touchAction: 'none' }}
           aria-label="Draw countertop outline on your photo"
         />
       </div>
@@ -259,7 +291,7 @@ export function SurfaceDrawer({
         <Button
           variant="outline"
           size="sm"
-          onClick={handleClearCurrent}
+          onClick={handleClear}
           disabled={currentPoints.length === 0}
         >
           <Trash2 className="mr-1 h-3.5 w-3.5" />

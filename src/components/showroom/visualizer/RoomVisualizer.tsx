@@ -150,6 +150,7 @@ export function RoomVisualizer({ initialStoneId, onGetEstimate }: RoomVisualizer
               imageHeight={imageHeight}
               polygons={polygons}
               textureSrc={selectedStone?.images.texture || null}
+              stoneId={selectedStoneId}
               opacity={opacity}
               textureScale={textureScale}
               rotation={rotation}

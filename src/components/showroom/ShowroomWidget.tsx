@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Star, Shield, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { StoneImage } from './shared/StoneImage';
 import { stones } from '@/data/showroom/stones';
 
 const featuredStones = stones.filter(s => s.tags.includes('popular')).slice(0, 4);
@@ -84,10 +85,13 @@ export function ShowroomWidget() {
                   transition={{ duration: 0.6 }}
                   className="absolute inset-0"
                 >
-                  <img
+                  <StoneImage
+                    stoneId={activeStone.id}
                     src={activeStone.images.slab}
                     alt={activeStone.name}
                     className="h-full w-full object-cover"
+                    size={512}
+                    loading="eager"
                   />
                   {/* Overlay with stone info */}
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-6">
@@ -114,10 +118,12 @@ export function ShowroomWidget() {
                   }`}
                   aria-label={`View ${stone.name}`}
                 >
-                  <img
+                  <StoneImage
+                    stoneId={stone.id}
                     src={stone.images.thumbnail}
                     alt=""
                     className="h-full w-full object-cover"
+                    size={96}
                   />
                 </button>
               ))}

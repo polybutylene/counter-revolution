@@ -15,6 +15,7 @@ import { ArrowLeft, ArrowRight, Sparkles, Eye, Palette } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { quizSteps, getQuizRecommendations } from '@/data/showroom/quizLogic';
 import { useAnalytics } from '../hooks/useAnalytics';
+import { StoneImage } from '../shared/StoneImage';
 import type { QuizAnswers, Stone } from '@/data/showroom/types';
 
 interface StoneQuizProps {
@@ -149,10 +150,12 @@ export function StoneQuiz({ open, onOpenChange, onViewStone, onVisualize }: Ston
                   className="flex gap-3 rounded-xl border border-warm-medium bg-white p-3"
                 >
                   <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg bg-warm-light">
-                    <img
+                    <StoneImage
+                      stoneId={stone.id}
                       src={stone.images.thumbnail}
                       alt={stone.name}
                       className="h-full w-full object-cover"
+                      size={160}
                     />
                     {i === 0 && (
                       <div className="absolute inset-0 flex items-center justify-center bg-gold/20">

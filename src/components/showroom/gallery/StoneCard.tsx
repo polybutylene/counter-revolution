@@ -3,6 +3,7 @@
 import { Heart, Eye, Palette } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { StoneImage } from '../shared/StoneImage';
 import { cn } from '@/lib/utils';
 import type { Stone } from '@/data/showroom/types';
 
@@ -32,11 +33,12 @@ export function StoneCard({
     <div className="group relative overflow-hidden rounded-xl bg-white shadow-sm border border-warm-medium/50 transition-shadow hover:shadow-md">
       {/* Image */}
       <div className="relative aspect-[4/3] overflow-hidden bg-warm-light">
-        <img
+        <StoneImage
+          stoneId={stone.id}
           src={stone.images.thumbnail}
           alt={`${stone.name} slab preview`}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          loading="lazy"
+          size={400}
         />
         {/* Favorite button */}
         <button

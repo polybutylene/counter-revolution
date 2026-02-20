@@ -12,6 +12,7 @@ import { useAnalytics } from '../hooks/useAnalytics';
 import { calculateEstimate } from '../hooks/useEstimate';
 import { stones, getStoneById } from '@/data/showroom/stones';
 import { getEdgeProfileById } from '@/data/showroom/edgeProfiles';
+import { StoneImage } from '../shared/StoneImage';
 import { cn } from '@/lib/utils';
 import type { EstimateFormData } from '@/data/showroom/types';
 
@@ -82,7 +83,7 @@ export function EstimateBuilder({ initialStoneId, hasVisualization = false }: Es
                   )}
                 >
                   <div className="h-10 w-10 shrink-0 overflow-hidden rounded bg-warm-light">
-                    <img src={stone.images.thumbnail} alt="" className="h-full w-full object-cover" loading="lazy" />
+                    <StoneImage stoneId={stone.id} src={stone.images.thumbnail} alt="" className="h-full w-full object-cover" size={80} />
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs font-medium text-dark truncate">{stone.name}</p>

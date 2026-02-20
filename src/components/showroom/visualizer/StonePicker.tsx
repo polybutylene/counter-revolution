@@ -1,6 +1,7 @@
 "use client";
 
 import { stones } from '@/data/showroom/stones';
+import { StoneImage } from '../shared/StoneImage';
 import { Heart } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -45,11 +46,12 @@ export function StonePicker({
               <Heart className="absolute top-1 right-1 h-3 w-3 fill-red-500 text-red-500" />
             )}
             <div className="h-12 w-full overflow-hidden rounded bg-warm-light">
-              <img
+              <StoneImage
+                stoneId={stone.id}
                 src={stone.images.thumbnail}
                 alt=""
                 className="h-full w-full object-cover"
-                loading="lazy"
+                size={128}
               />
             </div>
             <span className="text-[11px] font-medium text-dark leading-tight text-center line-clamp-2">

@@ -3,6 +3,7 @@
 import { Heart, X, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getStoneById } from '@/data/showroom/stones';
+import { StoneImage } from '../shared/StoneImage';
 import { cn } from '@/lib/utils';
 
 interface FavoritesBarProps {
@@ -46,10 +47,12 @@ export function FavoritesBar({ favorites, onViewStone, onRemove, onCompare, clas
                     className="flex items-center gap-2 rounded-full border border-warm-medium bg-warm-light px-3 py-1.5 text-xs font-medium text-dark hover:bg-warm-medium transition-colors"
                   >
                     <div className="h-5 w-5 rounded-full overflow-hidden bg-gray-200">
-                      <img
+                      <StoneImage
+                        stoneId={stone.id}
                         src={stone.images.thumbnail}
                         alt=""
                         className="h-full w-full object-cover"
+                        size={40}
                       />
                     </div>
                     {stone.name}
