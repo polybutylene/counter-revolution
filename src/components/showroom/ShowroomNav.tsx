@@ -1,6 +1,6 @@
 "use client";
 
-import { LayoutGrid, Camera, Calculator } from 'lucide-react';
+import { LayoutGrid, Calculator } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { ShowroomTab } from '@/data/showroom/types';
 
@@ -11,7 +11,6 @@ interface ShowroomNavProps {
 
 const tabs: { id: ShowroomTab; label: string; icon: typeof LayoutGrid }[] = [
   { id: 'gallery', label: 'Stone Gallery', icon: LayoutGrid },
-  { id: 'visualizer', label: 'Room Visualizer', icon: Camera },
   { id: 'estimate', label: 'Estimate Builder', icon: Calculator },
 ];
 

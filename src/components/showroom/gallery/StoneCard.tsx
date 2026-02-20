@@ -1,6 +1,6 @@
 "use client";
 
-import { Heart, Eye, Palette } from 'lucide-react';
+import { Heart, Eye, Calculator } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { StoneImage } from '../shared/StoneImage';
@@ -12,7 +12,7 @@ interface StoneCardProps {
   isFavorite: boolean;
   onToggleFavorite: () => void;
   onViewDetails: () => void;
-  onVisualize: () => void;
+  onEstimate: () => void;
 }
 
 const materialBadgeVariant: Record<string, 'default' | 'gold' | 'secondary'> = {
@@ -27,7 +27,7 @@ export function StoneCard({
   isFavorite,
   onToggleFavorite,
   onViewDetails,
-  onVisualize,
+  onEstimate,
 }: StoneCardProps) {
   return (
     <div className="group relative overflow-hidden rounded-xl bg-white shadow-sm border border-warm-medium/50 transition-shadow hover:shadow-md">
@@ -99,10 +99,10 @@ export function StoneCard({
             variant="gold"
             size="sm"
             className="flex-1 text-xs"
-            onClick={onVisualize}
+            onClick={onEstimate}
           >
-            <Palette className="mr-1 h-3.5 w-3.5" />
-            Visualize
+            <Calculator className="mr-1 h-3.5 w-3.5" />
+            Estimate
           </Button>
         </div>
       </div>

@@ -12,7 +12,6 @@ import { Badge } from '@/components/ui/badge';
 import {
   Heart,
   Share2,
-  Palette,
   Flame,
   Droplets,
   Shield,
@@ -34,7 +33,6 @@ interface StoneDetailProps {
   onOpenChange: (open: boolean) => void;
   isFavorite: boolean;
   onToggleFavorite: () => void;
-  onVisualize: (stoneId: string) => void;
   onEstimate: (stoneId: string) => void;
 }
 
@@ -70,7 +68,6 @@ export function StoneDetail({
   onOpenChange,
   isFavorite,
   onToggleFavorite,
-  onVisualize,
   onEstimate,
 }: StoneDetailProps) {
   const [activeImage, setActiveImage] = useState(0);
@@ -203,11 +200,7 @@ export function StoneDetail({
 
               {/* Actions */}
               <div className="flex flex-col gap-2 pt-2">
-                <Button variant="gold" size="lg" onClick={() => onVisualize(stone.id)} className="w-full">
-                  <Palette className="mr-2 h-4 w-4" />
-                  Visualize in My Kitchen
-                </Button>
-                <Button variant="default" size="lg" onClick={() => onEstimate(stone.id)} className="w-full">
+                <Button variant="gold" size="lg" onClick={() => onEstimate(stone.id)} className="w-full">
                   Get an Estimate
                 </Button>
                 <div className="flex gap-2">

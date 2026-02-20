@@ -4,13 +4,12 @@ import { useState, useCallback, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { ShowroomNav } from './ShowroomNav';
 import { StoneGallery } from './gallery/StoneGallery';
-import { RoomVisualizer } from './visualizer/RoomVisualizer';
 import { EstimateBuilder } from './estimate/EstimateBuilder';
 import { useShowroomSession } from './hooks/useShowroomSession';
 import { useAnalytics } from './hooks/useAnalytics';
 import type { ShowroomTab } from '@/data/showroom/types';
 
-const VALID_TABS: ShowroomTab[] = ['gallery', 'visualizer', 'estimate'];
+const VALID_TABS: ShowroomTab[] = ['gallery', 'estimate'];
 
 export function ShowroomPage() {
   const { session, setActiveTab, setActiveStone } = useShowroomSession();
@@ -25,7 +24,6 @@ export function ShowroomPage() {
 
   const [activeTab, setTab] = useState<ShowroomTab>(initialTab);
   const [selectedStoneId, setSelectedStoneId] = useState<string | null>(session.lastStoneId);
-  const [hasVisualization, setHasVisualization] = useState(false);
 
   useEffect(() => {
     track('showroom_entered');
@@ -36,26 +34,12 @@ export function ShowroomPage() {
     setActiveTab(tab);
   }, [setActiveTab]);
 
-  const handleVisualize = useCallback((stoneId: string) => {
-    setSelectedStoneId(stoneId);
-    setActiveStone(stoneId);
-    setTab('visualizer');
-    setActiveTab('visualizer');
-  }, [setActiveStone, setActiveTab]);
-
   const handleEstimate = useCallback((stoneId: string) => {
     setSelectedStoneId(stoneId);
     setActiveStone(stoneId);
     setTab('estimate');
     setActiveTab('estimate');
   }, [setActiveStone, setActiveTab]);
-
-  const handleGetEstimateFromVisualizer = useCallback((stoneId: string) => {
-    setSelectedStoneId(stoneId);
-    setHasVisualization(true);
-    setTab('estimate');
-    setActiveTab('estimate');
-  }, [setActiveTab]);
 
   return (
     <div className="min-h-screen bg-warm-light">
@@ -66,8 +50,7 @@ export function ShowroomPage() {
             Virtual Showroom
           </h1>
           <p className="mt-2 text-white/70 max-w-2xl mx-auto">
-            Browse premium stones, see them in your space, and get an instant estimate —
-            all without leaving home.
+            Browse premium stones and get an instant estimate — all without leaving home.
           </p>
         </div>
       </div>
@@ -81,21 +64,13 @@ export function ShowroomPage() {
       <div className="mx-auto max-w-7xl px-4 py-6 sm:py-8">
         {activeTab === 'gallery' && (
           <StoneGallery
-            onVisualize={handleVisualize}
             onEstimate={handleEstimate}
             initialStoneId={selectedStoneId || undefined}
-          />
-        )}
-        {activeTab === 'visualizer' && (
-          <RoomVisualizer
-            initialStoneId={selectedStoneId || undefined}
-            onGetEstimate={handleGetEstimateFromVisualizer}
           />
         )}
         {activeTab === 'estimate' && (
           <EstimateBuilder
             initialStoneId={selectedStoneId || undefined}
-            hasVisualization={hasVisualization}
           />
         )}
       </div>

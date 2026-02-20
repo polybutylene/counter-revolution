@@ -13,7 +13,6 @@ import { useAnalytics } from '../hooks/useAnalytics';
 import type { MaterialType, ColorFamily, PriceTier, RoomType } from '@/data/showroom/types';
 
 interface StoneGalleryProps {
-  onVisualize: (stoneId: string) => void;
   onEstimate: (stoneId: string) => void;
   initialStoneId?: string;
 }
@@ -26,7 +25,7 @@ interface Filters {
   search: string;
 }
 
-export function StoneGallery({ onVisualize, onEstimate, initialStoneId }: StoneGalleryProps) {
+export function StoneGallery({ onEstimate, initialStoneId }: StoneGalleryProps) {
   const { favorites, toggleFavorite, isFavorite } = useFavorites();
   const { track } = useAnalytics();
 
@@ -144,7 +143,7 @@ export function StoneGallery({ onVisualize, onEstimate, initialStoneId }: StoneG
                 if (!isFavorite(stone.id)) track('favorite_added', { stone_id: stone.id });
               }}
               onViewDetails={() => handleViewDetails(stone.id)}
-              onVisualize={() => onVisualize(stone.id)}
+              onEstimate={() => onEstimate(stone.id)}
             />
           ))}
         </div>
@@ -169,7 +168,6 @@ export function StoneGallery({ onVisualize, onEstimate, initialStoneId }: StoneG
         onOpenChange={setDetailOpen}
         isFavorite={detailStone ? isFavorite(detailStone) : false}
         onToggleFavorite={() => detailStone && toggleFavorite(detailStone)}
-        onVisualize={(id) => { setDetailOpen(false); onVisualize(id); }}
         onEstimate={(id) => { setDetailOpen(false); onEstimate(id); }}
       />
 
@@ -178,7 +176,7 @@ export function StoneGallery({ onVisualize, onEstimate, initialStoneId }: StoneG
         open={quizOpen}
         onOpenChange={setQuizOpen}
         onViewStone={handleViewDetails}
-        onVisualize={(id) => { setQuizOpen(false); onVisualize(id); }}
+        onEstimate={(id) => { setQuizOpen(false); onEstimate(id); }}
       />
 
       {/* Favorites bar */}

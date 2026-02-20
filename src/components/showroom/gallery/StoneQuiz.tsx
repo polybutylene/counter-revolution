@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, ArrowRight, Sparkles, Eye, Palette } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Sparkles, Eye, Calculator } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { quizSteps, getQuizRecommendations } from '@/data/showroom/quizLogic';
 import { useAnalytics } from '../hooks/useAnalytics';
@@ -22,10 +22,10 @@ interface StoneQuizProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onViewStone: (stoneId: string) => void;
-  onVisualize: (stoneId: string) => void;
+  onEstimate: (stoneId: string) => void;
 }
 
-export function StoneQuiz({ open, onOpenChange, onViewStone, onVisualize }: StoneQuizProps) {
+export function StoneQuiz({ open, onOpenChange, onViewStone, onEstimate }: StoneQuizProps) {
   const { track } = useAnalytics();
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswers>({});
@@ -177,10 +177,10 @@ export function StoneQuiz({ open, onOpenChange, onViewStone, onVisualize }: Ston
                         <Eye className="h-3 w-3" /> Details
                       </button>
                       <button
-                        onClick={() => { handleClose(); onVisualize(stone.id); }}
+                        onClick={() => { handleClose(); onEstimate(stone.id); }}
                         className="flex items-center gap-1 text-xs font-medium text-gold-dark hover:text-gold"
                       >
-                        <Palette className="h-3 w-3" /> Visualize
+                        <Calculator className="h-3 w-3" /> Estimate
                       </button>
                     </div>
                   </div>

@@ -47,8 +47,8 @@ export function ShowroomWidget() {
             </h2>
 
             <p className="mt-4 text-lg text-white/70 max-w-md mx-auto lg:mx-0">
-              Upload a photo of your kitchen, pick a premium stone, and see it rendered
-              in your actual space. Browse, visualize, and get a free estimate — all online.
+              Browse our curated collection of premium stones, compare options,
+              and get a free estimate — all online, no showroom visit needed.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">

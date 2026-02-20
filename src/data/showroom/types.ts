@@ -85,7 +85,7 @@ export interface QuizAnswers {
   budget?: string;
 }
 
-export type ShowroomTab = 'gallery' | 'visualizer' | 'estimate';
+export type ShowroomTab = 'gallery' | 'estimate';
 
 export interface Point {
   x: number;

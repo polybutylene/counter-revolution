@@ -8,13 +8,11 @@ const STORAGE_KEY = 'cr-showroom-session';
 interface SessionState {
   lastStoneId: string | null;
   lastTab: ShowroomTab;
-  visualizerImage: string | null;
 }
 
 const defaultSession: SessionState = {
   lastStoneId: null,
   lastTab: 'gallery',
-  visualizerImage: null,
 };
 
 export function useShowroomSession() {

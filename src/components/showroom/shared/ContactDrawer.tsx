@@ -19,7 +19,6 @@ interface ContactDrawerProps {
     stoneName?: string;
     estimateRange?: string;
     edgeProfile?: string;
-    hasVisualization?: boolean;
   };
 }
 
@@ -45,7 +44,6 @@ export function ContactDrawer({ open, onOpenChange, context }: ContactDrawerProp
     track('contact_form_submitted', {
       stone: context?.stoneName,
       has_estimate: !!context?.estimateRange,
-      has_visualization: context?.hasVisualization,
     });
 
     setSubmitted(true);
@@ -90,12 +88,6 @@ export function ContactDrawer({ open, onOpenChange, context }: ContactDrawerProp
             {context.edgeProfile && <p className="text-dark/70">Edge: {context.edgeProfile}</p>}
             {context.estimateRange && (
               <p className="text-dark/70">Estimate: {context.estimateRange}</p>
-            )}
-            {context.hasVisualization && (
-              <p className="text-dark/70 flex items-center gap-1">
-                <CheckCircle className="h-3.5 w-3.5 text-success" />
-                Visualization photo included
-              </p>
             )}
           </div>
         )}

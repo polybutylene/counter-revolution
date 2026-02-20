@@ -13,14 +13,12 @@ interface EstimateActionsProps {
   result: EstimateResult;
   stoneName: string;
   edgeProfileName: string;
-  hasVisualization: boolean;
 }
 
 export function EstimateActions({
   result,
   stoneName,
   edgeProfileName,
-  hasVisualization,
 }: EstimateActionsProps) {
   const { track } = useAnalytics();
   const [showShare, setShowShare] = useState(false);
@@ -84,7 +82,6 @@ export function EstimateActions({
           stoneName,
           estimateRange,
           edgeProfile: edgeProfileName,
-          hasVisualization,
         }}
       />
     </>

@@ -18,10 +18,9 @@ import type { EstimateFormData } from '@/data/showroom/types';
 
 interface EstimateBuilderProps {
   initialStoneId?: string;
-  hasVisualization?: boolean;
 }
 
-export function EstimateBuilder({ initialStoneId, hasVisualization = false }: EstimateBuilderProps) {
+export function EstimateBuilder({ initialStoneId }: EstimateBuilderProps) {
   const { track } = useAnalytics();
   const [tracked, setTracked] = useState(false);
 
@@ -147,7 +146,7 @@ export function EstimateBuilder({ initialStoneId, hasVisualization = false }: Es
                 result={result}
                 stoneName={selectedStone.name}
                 edgeProfileName={selectedEdge?.name || 'Standard Eased'}
-                hasVisualization={hasVisualization}
+                
               />
             </>
           ) : (
