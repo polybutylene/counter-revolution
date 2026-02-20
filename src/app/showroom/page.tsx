@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { ShowroomPage } from '@/components/showroom/ShowroomPage';
 
@@ -13,5 +14,9 @@ export const metadata: Metadata = {
 };
 
 export default function ShowroomRoute() {
-  return <ShowroomPage />;
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-warm-light" />}>
+      <ShowroomPage />
+    </Suspense>
+  );
 }

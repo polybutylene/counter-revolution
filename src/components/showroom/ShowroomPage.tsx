@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { ShowroomNav } from './ShowroomNav';
 import { StoneGallery } from './gallery/StoneGallery';
 import { RoomVisualizer } from './visualizer/RoomVisualizer';
@@ -9,11 +10,20 @@ import { useShowroomSession } from './hooks/useShowroomSession';
 import { useAnalytics } from './hooks/useAnalytics';
 import type { ShowroomTab } from '@/data/showroom/types';
 
+const VALID_TABS: ShowroomTab[] = ['gallery', 'visualizer', 'estimate'];
+
 export function ShowroomPage() {
   const { session, setActiveTab, setActiveStone } = useShowroomSession();
   const { track } = useAnalytics();
+  const searchParams = useSearchParams();
 
-  const [activeTab, setTab] = useState<ShowroomTab>(session.lastTab || 'gallery');
+  const initialTab = (() => {
+    const param = searchParams.get('tab') as ShowroomTab | null;
+    if (param && VALID_TABS.includes(param)) return param;
+    return session.lastTab || 'gallery';
+  })();
+
+  const [activeTab, setTab] = useState<ShowroomTab>(initialTab);
   const [selectedStoneId, setSelectedStoneId] = useState<string | null>(session.lastStoneId);
   const [hasVisualization, setHasVisualization] = useState(false);
 

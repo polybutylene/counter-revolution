@@ -164,7 +164,7 @@ export default function ServiceAreaPage({ params }: ServiceAreaPageProps) {
           <p className="mt-3 text-lg text-gray-300">{area.intro[1]}</p>
           <div className="mt-8">
             <Button variant="gold" size="xl" asChild>
-              <Link href="/estimate">Get Your Free Estimate</Link>
+              <Link href="/showroom">Get Your Free Estimate</Link>
             </Button>
           </div>
         </div>

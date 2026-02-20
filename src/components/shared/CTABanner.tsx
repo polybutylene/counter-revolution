@@ -16,7 +16,7 @@ interface CTABannerProps {
 export function CTABanner({
   headline,
   description,
-  primaryCTA = { label: "Get Your Free Estimate", href: "/estimate" },
+  primaryCTA = { label: "Get Your Free Estimate", href: "/showroom" },
   secondaryCTA,
   phone,
   variant = "navy",

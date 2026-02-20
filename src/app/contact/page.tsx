@@ -34,7 +34,7 @@ export default function ContactPage() {
               </p>
               <div className="mt-2">
                 <Link
-                  href="/estimate"
+                  href="/showroom"
                   className="inline-flex items-center gap-1 text-sm font-semibold text-gold hover:text-gold-dark"
                 >
                   Or use our Instant Estimator for a quick ballpark price <ArrowRight className="h-4 w-4" />

@@ -8,8 +8,6 @@ import { CTABanner } from "@/components/shared/CTABanner";
 import { AnimateInView } from "@/components/shared/AnimateInView";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight } from "lucide-react";
-import { BacksplashEstimator } from "@/components/estimator/BacksplashEstimator";
-import { RepairEstimator } from "@/components/estimator/RepairEstimator";
 
 // Fallback service data when CMS is not connected
 const SERVICES_DATA: Record<string, {
@@ -169,11 +167,7 @@ export default function ServicePage({ params }: ServicePageProps) {
           <p className="mt-4 text-lg text-gray-300">{service.description}</p>
           <div className="mt-8">
             <Button variant="gold" size="xl" asChild>
-              {params.slug === "backsplash-installation" || params.slug === "countertop-repair" ? (
-                <a href="#estimator">Get a Free {service.name} Estimate</a>
-              ) : (
-                <Link href="/estimate">Get a Free {service.name} Estimate</Link>
-              )}
+              <Link href="/showroom?tab=estimate">Get a Free {service.name} Estimate</Link>
             </Button>
           </div>
         </div>
@@ -242,42 +236,18 @@ export default function ServicePage({ params }: ServicePageProps) {
         </section>
       )}
 
-      {/* Pricing / Estimator */}
+      {/* Pricing */}
       <section className="bg-warm-light py-12 sm:py-16" id="estimator">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          {params.slug === "backsplash-installation" ? (
-            <AnimateInView>
-              <SectionHeading
-                label="Pricing"
-                title="Backsplash Ballpark Estimator"
-                description="Get a rough price range in under a minute — no commitment."
-              />
-              <div className="mt-8 rounded-2xl border border-warm-medium bg-white p-6 shadow-sm sm:p-8">
-                <BacksplashEstimator />
-              </div>
-            </AnimateInView>
-          ) : params.slug === "countertop-repair" ? (
-            <AnimateInView>
-              <SectionHeading
-                label="Pricing"
-                title="Repair Ballpark Estimator"
-                description="Answer 3 quick questions to see what your repair might cost."
-              />
-              <div className="mt-8 rounded-2xl border border-warm-medium bg-white p-6 shadow-sm sm:p-8">
-                <RepairEstimator />
-              </div>
-            </AnimateInView>
-          ) : (
-            <AnimateInView>
-              <SectionHeading label="Pricing" title="What to Expect" align="left" />
-              <p className="mt-4 text-muted-foreground">{service.pricing}</p>
-              <div className="mt-6">
-                <Button variant="gold" size="lg" asChild>
-                  <Link href="/estimate">Try the Instant Estimator</Link>
-                </Button>
-              </div>
-            </AnimateInView>
-          )}
+          <AnimateInView>
+            <SectionHeading label="Pricing" title="What to Expect" align="left" />
+            <p className="mt-4 text-muted-foreground">{service.pricing}</p>
+            <div className="mt-6">
+              <Button variant="gold" size="lg" asChild>
+                <Link href="/showroom?tab=estimate">Try the Instant Estimator</Link>
+              </Button>
+            </div>
+          </AnimateInView>
         </div>
       </section>
 
@@ -294,7 +264,7 @@ export default function ServicePage({ params }: ServicePageProps) {
       <CTABanner
         headline={`Ready for New ${service.name}?`}
         description="Get a free estimate from our team. We'll help you choose the perfect stone and edge profile."
-        primaryCTA={{ label: "Get Your Free Estimate", href: "/estimate" }}
+        primaryCTA={{ label: "Get Your Free Estimate", href: "/showroom" }}
         phone="(850) 000-0000"
       />
     </>

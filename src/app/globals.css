@@ -61,16 +61,19 @@
 
   /* CTA links styled as branded callout blocks */
   .blog-article a[href="/estimate"],
+  .blog-article a[href="/showroom"],
   .blog-article a[href="/contact"] {
     @apply inline-flex items-center gap-1 rounded-md border-b-0 bg-gold/10 px-3 py-1.5 font-semibold text-gold transition-all;
   }
   .blog-article a[href="/estimate"]:hover,
+  .blog-article a[href="/showroom"]:hover,
   .blog-article a[href="/contact"]:hover {
     @apply bg-gold/20 text-gold-dark;
   }
 
   /* Standalone CTA paragraphs — paragraphs that contain only links */
   .blog-article > p:has(> a[href="/estimate"]:only-child),
+  .blog-article > p:has(> a[href="/showroom"]:only-child),
   .blog-article > p:has(> a[href="/contact"]:only-child) {
     @apply my-8 rounded-xl border border-warm-medium bg-warm-light p-6 text-center;
   }

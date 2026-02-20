@@ -56,7 +56,7 @@ export function HowItWorks() {
         </div>
         <div className="mt-10 text-center">
           <Button variant="gold" size="lg" asChild>
-            <Link href="/estimate">Start Your Project Today</Link>
+            <Link href="/showroom">Start Your Project Today</Link>
           </Button>
         </div>
       </div>

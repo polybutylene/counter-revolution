@@ -49,12 +49,12 @@ export function MobileBottomBar() {
           <span className="text-xs font-medium">Text Us</span>
         </a>
         <Link
-          href="/estimate"
+          href="/showroom"
           className="flex flex-col items-center gap-1 bg-gold py-3 text-navy transition-colors active:bg-gold-dark"
-          aria-label="Get estimate"
+          aria-label="Visit showroom"
         >
           <Calculator className="h-5 w-5" />
-          <span className="text-xs font-bold">Estimate</span>
+          <span className="text-xs font-bold">Showroom</span>
         </Link>
       </div>
     </div>

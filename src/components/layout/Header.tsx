@@ -49,7 +49,7 @@ export function Header() {
             <span className="text-muted-foreground">· 120+ Reviews</span>
           </div>
           <Button variant="gold" size="default" asChild>
-            <Link href="/estimate">Get Free Estimate</Link>
+            <Link href="/showroom">Get Free Estimate</Link>
           </Button>
         </div>
 
@@ -92,7 +92,7 @@ export function Header() {
               ))}
               <div className="mt-4 flex flex-col gap-3 border-t border-warm-medium pt-4">
                 <Button variant="gold" size="lg" asChild>
-                  <Link href="/estimate" onClick={() => setMobileMenuOpen(false)}>
+                  <Link href="/showroom" onClick={() => setMobileMenuOpen(false)}>
                     Get Free Estimate
                   </Link>
                 </Button>

@@ -31,7 +31,7 @@ export function HeroSlider({
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center lg:justify-start">
               <Button variant="gold" size="xl" asChild>
-                <Link href="/estimate">Get Your Free Estimate</Link>
+                <Link href="/showroom">Get Your Free Estimate</Link>
               </Button>
               <Button variant="outlineGold" size="xl" asChild>
                 <Link href="/portfolio">See Our Work</Link>

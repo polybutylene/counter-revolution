@@ -259,7 +259,7 @@ export default function MaterialPage({ params }: MaterialPageProps) {
           </p>
           <div className="mt-8">
             <Button variant="gold" size="xl" asChild>
-              <Link href="/estimate">Get a Free {material.name} Estimate</Link>
+              <Link href="/showroom">Get a Free {material.name} Estimate</Link>
             </Button>
           </div>
         </div>
@@ -347,7 +347,7 @@ export default function MaterialPage({ params }: MaterialPageProps) {
             </p>
             <div className="mt-6">
               <Button variant="gold" size="lg" asChild>
-                <Link href="/estimate">Get Your Free Estimate</Link>
+                <Link href="/showroom">Get Your Free Estimate</Link>
               </Button>
             </div>
           </AnimateInView>
