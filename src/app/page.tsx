@@ -1,5 +1,6 @@
 import { HeroSlider } from "@/components/home/HeroSlider";
 import { TrustBar } from "@/components/home/TrustBar";
+import { ServiceCards } from "@/components/home/ServiceCards";
 import { HowItWorks } from "@/components/home/HowItWorks";
 import { FeaturedProjects } from "@/components/home/FeaturedProjects";
 import { MaterialsPreview } from "@/components/home/MaterialsPreview";
@@ -14,6 +15,7 @@ export default function HomePage() {
     <>
       <HeroSlider />
       <TrustBar />
+      <ServiceCards />
       <HowItWorks />
       <FeaturedProjects />
       <ShowroomWidget />
@@ -22,9 +24,9 @@ export default function HomePage() {
       <ServiceAreaMap />
       <BlogPreview />
       <CTABanner
-        headline="Ready to Transform Your Kitchen?"
-        description="Get a free estimate from Bay County's most trusted countertop experts. Call us or request a quote online."
-        primaryCTA={{ label: "Request Your Free Quote", href: "/showroom" }}
+        headline="Ready to Transform Your Home?"
+        description="Get a free, no-pressure estimate for any of our services."
+        primaryCTA={{ label: "Get Your Free Estimate", href: "/showroom" }}
         phone="(850) 000-0000"
         variant="navy"
       />

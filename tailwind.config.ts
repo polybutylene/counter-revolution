@@ -63,6 +63,7 @@ const config: Config = {
       fontFamily: {
         heading: ["var(--font-jakarta)", "sans-serif"],
         body: ["var(--font-inter)", "sans-serif"],
+        logo: ["var(--font-playfair)", "serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

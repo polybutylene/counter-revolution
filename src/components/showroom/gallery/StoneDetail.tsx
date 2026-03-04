@@ -240,7 +240,7 @@ export function StoneDetail({
         onOpenChange={setShowShare}
         title={stone.name}
         description="Check out this stone I'm considering for our countertops!"
-        shareText={`Check out ${stone.name} from Counter Revolution — ${stone.description}`}
+        shareText={`Check out ${stone.name} from Stratum Co. — ${stone.description}`}
       />
     </>
   );

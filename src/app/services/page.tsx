@@ -1,98 +1,84 @@
+import { Metadata } from "next";
 import Link from "next/link";
-import type { Metadata } from "next";
-import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { Diamond, Grid3X3, Paintbrush, Layers, ArrowRight, Star, Shield } from "lucide-react";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { SERVICE_CARDS } from "@/data/services/config";
 import { CTABanner } from "@/components/shared/CTABanner";
-import { AnimateInView } from "@/components/shared/AnimateInView";
-import { ArrowRight, ChefHat, Bath, Sun, Building2, Wrench, Grid3X3 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Countertop Services",
-  description: "Full-service countertop fabrication and installation in Bay County, FL. Kitchen countertops, bathroom vanities, outdoor kitchens, commercial projects, repair, and backsplash.",
+  title: "Our Services | Stratum Co.",
+  description: "Stone countertops, tile, painting, and flooring — all from one trusted team. Transparent pricing, free estimates.",
 };
 
-const SERVICES = [
-  {
-    name: "Kitchen Countertops",
-    slug: "kitchen-countertops",
-    icon: <ChefHat className="h-8 w-8" />,
-    description: "The centerpiece of your home. We fabricate and install premium granite, quartz, marble, and quartzite kitchen countertops with precision.",
-  },
-  {
-    name: "Bathroom Vanities",
-    slug: "bathroom-vanities",
-    icon: <Bath className="h-8 w-8" />,
-    description: "Upgrade your bathrooms with custom stone vanity tops. Single sinks, double sinks, and full-slab statement pieces.",
-  },
-  {
-    name: "Outdoor Kitchens",
-    slug: "outdoor-kitchens",
-    icon: <Sun className="h-8 w-8" />,
-    description: "Built to withstand Florida summers. We install durable, weather-resistant countertops for outdoor cooking and entertaining spaces.",
-  },
-  {
-    name: "Commercial Countertops",
-    slug: "commercial-countertops",
-    icon: <Building2 className="h-8 w-8" />,
-    description: "Hotels, restaurants, offices, and retail. High-traffic surfaces that look premium and last. Volume pricing available.",
-  },
-  {
-    name: "Countertop Repair",
-    slug: "countertop-repair",
-    icon: <Wrench className="h-8 w-8" />,
-    description: "Chips, cracks, stains, and seam issues. We restore damaged stone countertops to like-new condition.",
-  },
-  {
-    name: "Backsplash Installation",
-    slug: "backsplash-installation",
-    icon: <Grid3X3 className="h-8 w-8" />,
-    description: "Complete the look with a matching stone backsplash. 4-inch or full-height options to complement your countertops.",
-  },
-];
+const iconMap: Record<string, React.ReactNode> = {
+  diamond: <Diamond className="h-6 w-6" />,
+  grid: <Grid3X3 className="h-6 w-6" />,
+  paintbrush: <Paintbrush className="h-6 w-6" />,
+  layers: <Layers className="h-6 w-6" />,
+};
 
 export default function ServicesPage() {
   return (
     <>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Breadcrumbs />
-      </div>
+      <section className="bg-navy py-12 sm:py-16">
+        <div className="mx-auto max-w-4xl px-4 text-center">
+          <h1 className="font-heading text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+            Our Services
+          </h1>
+          <p className="mt-4 text-lg text-gray-300">
+            Four trades, one standard. Every surface in your home, handled by one team you trust.
+          </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm text-gray-300">
+            <span className="flex items-center gap-1.5">
+              <Star className="h-4 w-4 fill-gold text-gold" />
+              4.8 · 120+ Reviews
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Shield className="h-4 w-4 text-gold" />
+              Free Estimates, Always
+            </span>
+          </div>
+        </div>
+      </section>
+
       <section className="py-12 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            label="What We Do"
-            title="Our Countertop Services"
-            description="From fabrication to installation, we provide a complete countertop experience for homeowners, contractors, and businesses throughout Bay County."
-          />
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {SERVICES.map((service, i) => (
-              <AnimateInView key={service.slug} delay={i * 0.08}>
-                <Link
-                  href={`/services/${service.slug}`}
-                  className="group flex flex-col rounded-xl border border-warm-medium bg-white p-6 transition-all hover:border-gold hover:shadow-md"
-                >
-                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-warm-light text-navy group-hover:bg-gold/10 group-hover:text-gold">
-                    {service.icon}
-                  </div>
-                  <h3 className="mt-4 font-heading text-lg font-semibold text-navy group-hover:text-gold">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {SERVICE_CARDS.map((service) => (
+              <Link
+                key={service.id}
+                href={service.href}
+                className="group flex gap-4 overflow-hidden rounded-xl border border-warm-medium bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+              >
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-navy text-white">
+                  {iconMap[service.icon]}
+                </div>
+                <div className="flex-1">
+                  <h2 className="font-heading text-lg font-bold text-navy group-hover:text-gold">
                     {service.name}
-                  </h3>
-                  <p className="mt-2 flex-1 text-sm text-muted-foreground">
+                  </h2>
+                  <p className="mt-1 text-sm text-muted-foreground">
                     {service.description}
                   </p>
-                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-navy group-hover:text-gold">
-                    Learn More <ArrowRight className="h-4 w-4" />
+                  <p className="mt-2 text-sm font-semibold text-gold">
+                    {service.priceRange}
+                  </p>
+                  <span className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-navy group-hover:text-gold">
+                    Learn More <ArrowRight className="h-3.5 w-3.5" />
                   </span>
-                </Link>
-              </AnimateInView>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
+
       <CTABanner
-        headline="Not Sure Which Service You Need?"
-        description="Tell us about your project and we'll guide you to the right solution. Free estimates, always."
-        primaryCTA={{ label: "Get a Free Estimate", href: "/estimate" }}
+        headline="Ready to Get Started?"
+        description="Get a free, no-pressure estimate for any of our services."
+        primaryCTA={{ label: "Get Your Free Estimate", href: "/showroom" }}
         phone="(850) 000-0000"
+        variant="navy"
       />
     </>
   );

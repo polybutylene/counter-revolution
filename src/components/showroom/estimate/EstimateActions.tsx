@@ -71,8 +71,8 @@ export function EstimateActions({
         open={showShare}
         onOpenChange={setShowShare}
         title="My Countertop Estimate"
-        description="Check out this countertop estimate from Counter Revolution"
-        shareText={`I'm looking at ${stoneName} countertops from Counter Revolution. Estimated cost: ${estimateRange}. What do you think?`}
+        description="Check out this countertop estimate from Stratum Co."
+        shareText={`I'm looking at ${stoneName} countertops from Stratum Co.. Estimated cost: ${estimateRange}. What do you think?`}
       />
 
       <ContactDrawer

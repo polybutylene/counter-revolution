@@ -42,13 +42,13 @@ export function ShowroomWidget() {
             </div>
 
             <h2 className="font-heading text-3xl font-bold text-white sm:text-4xl lg:text-5xl leading-tight">
-              See Your New Countertops
+              See Your New Surfaces
               <span className="block text-gold">Before You Commit</span>
             </h2>
 
             <p className="mt-4 text-lg text-white/70 max-w-md mx-auto lg:mx-0">
-              Browse our curated collection of premium stones, compare options,
-              and get a free estimate — all online, no showroom visit needed.
+              Browse our curated collections — stone, tile, paint, and flooring.
+              Compare options and get a free estimate, all online.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">

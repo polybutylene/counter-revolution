@@ -87,7 +87,7 @@ export function StoneGallery({ onEstimate, initialStoneId }: StoneGalleryProps) 
         </h2>
         <p className="mt-2 text-dark/70 max-w-xl mx-auto">
           Browse our curated collection of premium granite, quartz, marble, and quartzite.
-          Every stone installed by Counter Revolution craftsmen.
+          Every stone installed by Stratum Co. craftsmen.
         </p>
       </div>
 

@@ -129,7 +129,7 @@ function generateReason(stone: Stone, answers: QuizAnswers): string {
   }
 
   if (stone.tags.includes('staff-pick')) {
-    parts.push('a Counter Revolution team pick');
+    parts.push('a Stratum Co. team pick');
   }
 
   if (parts.length === 0) {

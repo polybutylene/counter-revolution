@@ -2,20 +2,18 @@ import Link from "next/link";
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram, ExternalLink } from "lucide-react";
 
 const serviceLinks = [
-  { label: "Kitchen Countertops", href: "/services/kitchen-countertops" },
-  { label: "Bathroom Vanities", href: "/services/bathroom-vanities" },
-  { label: "Outdoor Kitchens", href: "/services/outdoor-kitchens" },
-  { label: "Commercial Countertops", href: "/services/commercial-countertops" },
-  { label: "Countertop Repair", href: "/services/countertop-repair" },
-  { label: "Backsplash Installation", href: "/services/backsplash-installation" },
+  { label: "Stone (Countertops)", href: "/services/stone" },
+  { label: "Tile", href: "/services/tile" },
+  { label: "Coating (Painting)", href: "/services/coating" },
+  { label: "Flooring", href: "/services/flooring" },
 ];
 
-const materialLinks = [
-  { label: "Granite", href: "/materials/granite" },
-  { label: "Quartz", href: "/materials/quartz" },
-  { label: "Marble", href: "/materials/marble" },
-  { label: "Quartzite", href: "/materials/quartzite" },
-  { label: "Compare Materials", href: "/materials/compare" },
+const quickLinks = [
+  { label: "Virtual Showroom", href: "/showroom" },
+  { label: "Instant Estimator", href: "/estimator" },
+  { label: "Our Work", href: "/portfolio" },
+  { label: "Blog & Guides", href: "/blog" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const serviceAreaLinks = [
@@ -36,11 +34,11 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* Contact Info */}
           <div>
-            <h3 className="font-heading text-lg font-bold text-white">
-              Counter<span className="text-gold"> Revolution</span>
+            <h3 className="font-logo text-lg font-bold text-white">
+              Stratum<span className="text-gold"> Co.</span>
             </h3>
             <p className="mt-3 text-sm text-gray-300">
-              Premium countertop fabrication &amp; installation in Bay County, Florida.
+              Premium home surfaces — stone, tile, coating &amp; flooring — in Bay County, Florida.
             </p>
             <ul className="mt-4 space-y-3">
               <li>
@@ -54,11 +52,11 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:info@counterrevolution.com"
+                  href="mailto:info@stratumco.com"
                   className="flex items-center gap-2 text-sm text-gray-300 transition-colors hover:text-gold"
                 >
                   <Mail className="h-4 w-4 shrink-0" />
-                  info@counterrevolution.com
+                  info@stratumco.com
                 </a>
               </li>
               <li className="flex items-start gap-2 text-sm text-gray-300">
@@ -102,13 +100,13 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Materials */}
+          {/* Quick Links */}
           <div>
             <h4 className="font-heading text-sm font-semibold uppercase tracking-wider text-gold">
-              Materials
+              Quick Links
             </h4>
             <ul className="mt-4 space-y-2">
-              {materialLinks.map((link) => (
+              {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -150,7 +148,7 @@ export function Footer() {
           </div>
           <div className="flex items-center gap-4 text-xs text-gray-400">
             <Link href="/privacy" className="hover:text-gray-200">Privacy Policy</Link>
-            <span>&copy; {new Date().getFullYear()} Counter Revolution. All rights reserved.</span>
+            <span>&copy; {new Date().getFullYear()} Stratum Co. All rights reserved.</span>
           </div>
         </div>
       </div>

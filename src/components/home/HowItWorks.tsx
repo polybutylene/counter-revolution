@@ -1,4 +1,4 @@
-import { ClipboardList, Ruler, Gem, Wrench } from "lucide-react";
+import { ClipboardList, Ruler, Wrench } from "lucide-react";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { AnimateInView } from "@/components/shared/AnimateInView";
 import Link from "next/link";
@@ -8,22 +8,20 @@ const steps = [
   {
     icon: <ClipboardList className="h-8 w-8" />,
     title: "Tell Us About Your Project",
-    description: "Call, fill out our form, or walk into our showroom. We'll ask a few questions about your space and goals.",
+    description:
+      "Call, fill out our form, or walk into our showroom. We'll ask a few questions about your space and goals.",
   },
   {
     icon: <Ruler className="h-8 w-8" />,
     title: "We Measure & Quote",
-    description: "Our team comes to you with digital laser measurement technology. You'll get a transparent, detailed quote.",
-  },
-  {
-    icon: <Gem className="h-8 w-8" />,
-    title: "Choose Your Stone",
-    description: "Visit our showroom or browse online. We'll help you pick the perfect material, color, and edge profile.",
+    description:
+      "Our team comes to you with digital laser measurement technology. You'll get a transparent, detailed quote.",
   },
   {
     icon: <Wrench className="h-8 w-8" />,
-    title: "We Fabricate & Install",
-    description: "We cut, polish, and install your countertops in 7-10 business days. You'll love the transformation.",
+    title: "Professional Installation",
+    description:
+      "Our trained crews handle everything — from prep to final cleanup. Your satisfaction is guaranteed.",
   },
 ];
 
@@ -34,9 +32,9 @@ export function HowItWorks() {
         <SectionHeading
           label="Our Process"
           title="How It Works"
-          description="From first call to final install, we make countertop replacement simple."
+          description="From first call to final install, we make home improvement simple."
         />
-        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
           {steps.map((step, i) => (
             <AnimateInView key={i} delay={i * 0.1}>
               <div className="text-center">
@@ -44,12 +42,16 @@ export function HowItWorks() {
                   {step.icon}
                 </div>
                 <div className="mt-2 flex items-center justify-center">
-                  <span className="text-xs font-bold text-gold">Step {i + 1}</span>
+                  <span className="text-xs font-bold text-gold">
+                    Step {i + 1}
+                  </span>
                 </div>
                 <h3 className="mt-3 font-heading text-lg font-semibold text-navy">
                   {step.title}
                 </h3>
-                <p className="mt-2 text-sm text-muted-foreground">{step.description}</p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {step.description}
+                </p>
               </div>
             </AnimateInView>
           ))}

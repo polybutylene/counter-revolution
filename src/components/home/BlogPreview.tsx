@@ -28,9 +28,9 @@ export function BlogPreview({ posts }: BlogPreviewProps) {
     <section className="py-16 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          label="From Our Blog"
-          title="Countertop Guides & Inspiration"
-          description="Expert advice to help you make confident decisions about your countertop project."
+          label="Blog"
+          title="Guides & Inspiration"
+          description="Expert advice to help you make confident decisions about your next project."
         />
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
           {displayPosts.slice(0, 3).map((post, i) => (
@@ -50,7 +50,7 @@ export function BlogPreview({ posts }: BlogPreviewProps) {
                     />
                   ) : (
                     <div className="flex h-full items-center justify-center">
-                      <span className="font-heading text-4xl font-bold text-navy/10">CR</span>
+                      <span className="font-heading text-4xl font-bold text-navy/10">S</span>
                     </div>
                   )}
                 </div>

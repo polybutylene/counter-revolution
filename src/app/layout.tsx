@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ConvexClientProvider } from "@/components/providers/ConvexClientProvider";
 import { Header } from "@/components/layout/Header";
@@ -20,35 +20,42 @@ const inter = Inter({
   display: "swap",
 });
 
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  display: "swap",
+  weight: ["700"],
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://counterrevolution.com"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://stratumco.com"
   ),
   title: {
-    default: "Counter Revolution | Bay County's Trusted Countertop Experts",
-    template: "%s | Counter Revolution",
+    default: "Stratum Co. | Bay County's Trusted Home Surfaces Experts",
+    template: "%s | Stratum Co.",
   },
   description:
-    "Premium granite, quartz, marble & quartzite countertop fabrication and installation in Bay County, FL. Free estimates, 7-10 day turnaround. Locally owned.",
+    "Premium countertops, tile, painting, and flooring — fabricated and installed in Bay County, FL. Free estimates, transparent pricing. Locally owned.",
   keywords: [
     "countertops",
+    "tile installation",
+    "house painting",
+    "flooring installation",
     "granite countertops",
     "quartz countertops",
-    "marble countertops",
-    "countertop installation",
     "Bay County FL",
     "Panama City",
     "Panama City Beach",
-    "kitchen countertops",
-    "bathroom vanities",
+    "home improvement",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Counter Revolution",
-    title: "Counter Revolution | Bay County's Trusted Countertop Experts",
+    siteName: "Stratum Co.",
+    title: "Stratum Co. | Bay County's Trusted Home Surfaces Experts",
     description:
-      "Premium granite, quartz, marble & quartzite countertop fabrication and installation in Bay County, FL.",
+      "Premium countertops, tile, painting, and flooring in Bay County, FL. Transparent pricing, free estimates.",
   },
   twitter: {
     card: "summary_large_image",
@@ -65,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${jakarta.variable} ${inter.variable}`}>
+    <html lang="en" className={`${jakarta.variable} ${inter.variable} ${playfair.variable}`}>
       <head>
         <GoogleAnalytics />
         <LocalBusinessJsonLd />

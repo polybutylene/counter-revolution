@@ -23,7 +23,7 @@ export const sendLeadNotification = action({
     if (!notificationEmail) return;
 
     await resend.emails.send({
-      from: "Counter Revolution <noreply@counterrevolution.com>",
+      from: "Stratum Co. <noreply@stratumco.com>",
       to: [notificationEmail],
       subject: `New Estimate Lead: ${args.leadName} — ${args.projectType}`,
       html: `
@@ -53,9 +53,9 @@ export const sendEstimateConfirmation = action({
   },
   handler: async (ctx, args) => {
     await resend.emails.send({
-      from: "Counter Revolution <noreply@counterrevolution.com>",
+      from: "Stratum Co. <noreply@stratumco.com>",
       to: [args.customerEmail],
-      subject: "Your Estimate from Counter Revolution",
+      subject: "Your Estimate from Stratum Co.",
       html: `
         <div style="max-width:600px;margin:0 auto;font-family:Arial,sans-serif">
           <div style="background:#1B3A5C;padding:24px;text-align:center">
@@ -70,11 +70,11 @@ export const sendEstimateConfirmation = action({
               <p style="font-size:14px;color:#666;margin:0">Material: ${args.materialPreference}</p>
             </div>
             <p>This is a ballpark estimate. A member of our team will contact you within 24 hours to discuss your project in detail and schedule a free in-home measurement.</p>
-            <p>In the meantime, feel free to <a href="https://counterrevolution.com/portfolio" style="color:#C9942E">browse our portfolio</a> or <a href="https://counterrevolution.com/materials" style="color:#C9942E">explore materials</a>.</p>
-            <p>Best regards,<br>The Counter Revolution Team</p>
+            <p>In the meantime, feel free to <a href="https://stratumco.com/portfolio" style="color:#C9942E">browse our portfolio</a> or <a href="https://stratumco.com/materials" style="color:#C9942E">explore materials</a>.</p>
+            <p>Best regards,<br>The Stratum Co. Team</p>
           </div>
           <div style="background:#f5f5f5;padding:16px;text-align:center;font-size:12px;color:#999">
-            <p>Counter Revolution · Panama City, FL · (850) 000-0000</p>
+            <p>Stratum Co. · Panama City, FL · (850) 000-0000</p>
           </div>
         </div>
       `,
@@ -89,9 +89,9 @@ export const sendContactConfirmation = action({
   },
   handler: async (ctx, args) => {
     await resend.emails.send({
-      from: "Counter Revolution <noreply@counterrevolution.com>",
+      from: "Stratum Co. <noreply@stratumco.com>",
       to: [args.customerEmail],
-      subject: "We received your message — Counter Revolution",
+      subject: "We received your message — Stratum Co.",
       html: `
         <div style="max-width:600px;margin:0 auto;font-family:Arial,sans-serif">
           <div style="background:#1B3A5C;padding:24px;text-align:center">
@@ -101,7 +101,7 @@ export const sendContactConfirmation = action({
             <p>Hi ${args.customerName},</p>
             <p>Thank you for reaching out! We've received your message and a member of our team will get back to you within 24 hours.</p>
             <p>If you need immediate assistance, call us at <a href="tel:+18500000000" style="color:#C9942E">(850) 000-0000</a>.</p>
-            <p>Best regards,<br>The Counter Revolution Team</p>
+            <p>Best regards,<br>The Stratum Co. Team</p>
           </div>
         </div>
       `,
@@ -127,7 +127,7 @@ export const sendProjectCodeEmail = action({
       : "";
 
     await resend.emails.send({
-      from: "Counter Revolution <noreply@counterrevolution.com>",
+      from: "Stratum Co. <noreply@stratumco.com>",
       to: [args.customerEmail],
       subject: `Your Project Is Live — ${args.projectCode}`,
       html: `
@@ -148,14 +148,14 @@ export const sendProjectCodeEmail = action({
               ${completionLine}
             </table>
             <div style="text-align:center;margin:24px 0">
-              <a href="https://counterrevolution.com/portal" style="display:inline-block;background:#C9942E;color:#1B3A5C;font-weight:bold;padding:14px 28px;border-radius:8px;text-decoration:none;font-size:16px">Track Your Project</a>
+              <a href="https://stratumco.com/portal" style="display:inline-block;background:#C9942E;color:#1B3A5C;font-weight:bold;padding:14px 28px;border-radius:8px;text-decoration:none;font-size:16px">Track Your Project</a>
             </div>
             <p style="font-size:14px;color:#666">Log in with your email address (<strong>${args.customerEmail}</strong>) and the project code above.</p>
             <p>You can also send us messages directly through the tracker if you have questions at any point.</p>
-            <p>Best regards,<br>The Counter Revolution Team</p>
+            <p>Best regards,<br>The Stratum Co. Team</p>
           </div>
           <div style="background:#f5f5f5;padding:16px;text-align:center;font-size:12px;color:#999">
-            <p>Counter Revolution · Panama City, FL · (850) 000-0000</p>
+            <p>Stratum Co. · Panama City, FL · (850) 000-0000</p>
           </div>
         </div>
       `,
@@ -181,7 +181,7 @@ export const sendStageUpdateEmail = action({
       : "";
 
     await resend.emails.send({
-      from: "Counter Revolution <noreply@counterrevolution.com>",
+      from: "Stratum Co. <noreply@stratumco.com>",
       to: [args.customerEmail],
       subject: `Project Update: ${args.stageName} — ${args.projectCode}`,
       html: `
@@ -198,9 +198,9 @@ export const sendStageUpdateEmail = action({
               ${dateBlock}
             </div>
             <div style="text-align:center;margin:24px 0">
-              <a href="https://counterrevolution.com/portal" style="display:inline-block;background:#C9942E;color:#1B3A5C;font-weight:bold;padding:12px 24px;border-radius:8px;text-decoration:none">View Full Timeline</a>
+              <a href="https://stratumco.com/portal" style="display:inline-block;background:#C9942E;color:#1B3A5C;font-weight:bold;padding:12px 24px;border-radius:8px;text-decoration:none">View Full Timeline</a>
             </div>
-            <p>Best regards,<br>The Counter Revolution Team</p>
+            <p>Best regards,<br>The Stratum Co. Team</p>
           </div>
         </div>
       `,

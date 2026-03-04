@@ -11,7 +11,7 @@ import { Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contact Us | Get a Free Quote",
-  description: "Request a free countertop estimate or ask a question. Call, email, or fill out our form. Counter Revolution serves all of Bay County, FL.",
+  description: "Request a free countertop estimate or ask a question. Call, email, or fill out our form. Stratum Co. serves all of Bay County, FL.",
 };
 
 export default function ContactPage() {
@@ -64,12 +64,12 @@ export default function ContactPage() {
                     </a>
                   </li>
                   <li>
-                    <a href="mailto:info@counterrevolution.com" className="flex items-start gap-3 group">
+                    <a href="mailto:info@stratumco.com" className="flex items-start gap-3 group">
                       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-warm-light text-navy group-hover:bg-gold/10 group-hover:text-gold">
                         <Mail className="h-5 w-5" />
                       </div>
                       <div>
-                        <p className="text-sm font-semibold text-navy group-hover:text-gold">info@counterrevolution.com</p>
+                        <p className="text-sm font-semibold text-navy group-hover:text-gold">info@stratumco.com</p>
                         <p className="text-sm text-muted-foreground">We reply within 24 hours</p>
                       </div>
                     </a>
@@ -107,7 +107,7 @@ export default function ContactPage() {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Counter Revolution location"
+                  title="Stratum Co. location"
                 />
               </div>
             </div>

@@ -10,16 +10,11 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, ArrowRight, Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { BLOG_POSTS } from "@/data/blog/posts";
-
-const BLOG_CATEGORIES = [
-  { id: "all", label: "All" },
-  { id: "buying-guide", label: "Buying Guide" },
-  { id: "material-education", label: "Material Education" },
-  { id: "design-inspiration", label: "Design Inspiration" },
-  { id: "maintenance-care", label: "Maintenance & Care" },
-  { id: "company-news", label: "Company News" },
-] as const;
+import {
+  BLOG_POSTS,
+  BLOG_CATEGORIES,
+  BLOG_SERVICE_FILTERS,
+} from "@/data/blog/posts";
 
 function formatCategoryLabel(category: string): string {
   return category
@@ -30,47 +25,68 @@ function formatCategoryLabel(category: string): string {
 
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [selectedService, setSelectedService] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredPosts = useMemo(() => {
     return BLOG_POSTS.filter((post) => {
       const matchesCategory =
         selectedCategory === "all" || post.category === selectedCategory;
+      const matchesService =
+        selectedService === "all" || post.serviceTag === selectedService;
       const matchesSearch =
         !searchQuery ||
         post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesCategory && matchesSearch;
+      return matchesCategory && matchesService && matchesSearch;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [selectedCategory, selectedService, searchQuery]);
 
   return (
     <>
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <SectionHeading
           label="Blog"
-          title="Countertop Guides & Inspiration"
-          description="Expert advice to help you make confident decisions about your countertop project."
+          title="Guides & Inspiration"
+          description="Expert advice to help you make confident decisions about your next project."
         />
 
         {/* Category Tabs */}
         <div className="mt-8 overflow-x-auto">
-          <div className="flex gap-2 border-b border-warm-medium pb-4">
+          <div className="flex gap-2 pb-4">
             {BLOG_CATEGORIES.map((cat) => (
               <Button
-                key={cat.id}
-                variant={selectedCategory === cat.id ? "gold" : "ghost"}
+                key={cat.value}
+                variant={selectedCategory === cat.value ? "gold" : "ghost"}
                 size="sm"
                 className={cn(
                   "shrink-0",
-                  selectedCategory === cat.id && "font-bold"
+                  selectedCategory === cat.value && "font-bold"
                 )}
-                onClick={() => setSelectedCategory(cat.id)}
+                onClick={() => setSelectedCategory(cat.value)}
               >
                 {cat.label}
               </Button>
             ))}
           </div>
+        </div>
+
+        {/* Service Filter */}
+        <div className="flex flex-wrap gap-2 border-b border-warm-medium pb-4">
+          {BLOG_SERVICE_FILTERS.map((filter) => (
+            <button
+              key={filter.value}
+              className={cn(
+                "rounded-full px-3 py-1 text-xs font-medium transition-colors",
+                selectedService === filter.value
+                  ? "bg-navy text-white"
+                  : "bg-warm-light text-dark hover:bg-warm-medium"
+              )}
+              onClick={() => setSelectedService(filter.value)}
+            >
+              {filter.label}
+            </button>
+          ))}
         </div>
 
         {/* Search */}
@@ -99,22 +115,33 @@ export default function BlogPage() {
                   <div className="relative aspect-[16/9] overflow-hidden bg-warm-light">
                     <div className="flex h-full items-center justify-center">
                       <span className="font-heading text-4xl font-bold text-navy/10">
-                        CR
+                        S
                       </span>
                     </div>
                   </div>
                   <div className="p-5">
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <Badge variant="secondary" className="text-xs capitalize">
+                    <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                      <Badge
+                        variant="secondary"
+                        className="text-xs capitalize"
+                      >
                         {formatCategoryLabel(post.category)}
                       </Badge>
+                      {post.serviceTag && (
+                        <Badge variant="outline" className="text-xs capitalize">
+                          {post.serviceTag}
+                        </Badge>
+                      )}
                       <span className="flex items-center gap-1">
                         <Calendar className="h-3 w-3" />
-                        {new Date(post.publishDate).toLocaleDateString("en-US", {
-                          month: "short",
-                          day: "numeric",
-                          year: "numeric",
-                        })}
+                        {new Date(post.publishDate).toLocaleDateString(
+                          "en-US",
+                          {
+                            month: "short",
+                            day: "numeric",
+                            year: "numeric",
+                          }
+                        )}
                       </span>
                     </div>
                     <h3 className="mt-3 font-heading text-base font-semibold text-navy line-clamp-2 group-hover:text-gold">
@@ -140,8 +167,8 @@ export default function BlogPage() {
 
       <CTABanner
         headline="Ready to Start Your Project?"
-        description="Get a free estimate and see why Bay County trusts Countertop Revolution."
-        primaryCTA={{ label: "Get Your Free Estimate", href: "/estimate" }}
+        description="Get a free estimate and see why Bay County trusts Stratum Co."
+        primaryCTA={{ label: "Get Your Free Estimate", href: "/showroom" }}
       />
     </>
   );

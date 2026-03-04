@@ -15,13 +15,13 @@ export function LocalBusinessJsonLd() {
   const data = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://counterrevolution.com",
-    name: "Counter Revolution",
+    "@id": "https://stratumco.com",
+    name: "Stratum Co.",
     description:
-      "Premium granite, quartz, marble & quartzite countertop fabrication and installation in Bay County, FL.",
-    url: "https://counterrevolution.com",
+      "Premium home surfaces — countertops, tile, painting, and flooring — in Bay County, FL. Transparent pricing, free estimates.",
+    url: "https://stratumco.com",
     telephone: "+18500000000",
-    email: "info@counterrevolution.com",
+    email: "info@stratumco.com",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Panama City",
@@ -81,7 +81,7 @@ export function ServiceJsonLd({
     url,
     provider: {
       "@type": "LocalBusiness",
-      name: "Counter Revolution",
+      name: "Stratum Co.",
     },
     areaServed: {
       "@type": "State",
@@ -121,7 +121,7 @@ export function ArticleJsonLd({
     },
     publisher: {
       "@type": "Organization",
-      name: "Counter Revolution",
+      name: "Stratum Co.",
     },
   };
 

@@ -20,7 +20,7 @@ export function AdminDashboard() {
             <h1 className="font-heading text-lg font-bold text-white">
               Admin Dashboard
             </h1>
-            <p className="text-xs text-gray-400">Counter Revolution</p>
+            <p className="text-xs text-gray-400">Stratum Co.</p>
           </div>
           <div className="flex gap-2">
             <Button variant="outlineGold" size="sm" asChild>

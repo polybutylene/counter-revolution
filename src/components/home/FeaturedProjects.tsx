@@ -1,9 +1,13 @@
+"use client";
+
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { AnimateInView } from "@/components/shared/AnimateInView";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface FeaturedProject {
   _id: string;
@@ -11,17 +15,29 @@ interface FeaturedProject {
   slug: string;
   heroImage?: string;
   materialType?: { name: string };
+  serviceType?: string;
   roomType?: string;
   description?: string;
   city?: string;
 }
 
-// Placeholder projects used when CMS isn't connected
 const PLACEHOLDER_PROJECTS: FeaturedProject[] = [
-  { _id: "1", title: "Modern Kitchen Renovation", slug: "modern-kitchen", materialType: { name: "Quartz" }, roomType: "kitchen", city: "Panama City" },
-  { _id: "2", title: "Coastal Bathroom Vanity", slug: "coastal-bathroom", materialType: { name: "Marble" }, roomType: "bathroom", city: "Panama City Beach" },
-  { _id: "3", title: "Outdoor Entertainment Kitchen", slug: "outdoor-kitchen", materialType: { name: "Granite" }, roomType: "outdoor", city: "Lynn Haven" },
-  { _id: "4", title: "Elegant Master Bath", slug: "elegant-master-bath", materialType: { name: "Quartzite" }, roomType: "bathroom", city: "30A" },
+  { _id: "1", title: "Modern Kitchen Renovation", slug: "modern-kitchen", materialType: { name: "Quartz" }, serviceType: "stone", roomType: "kitchen", city: "Panama City" },
+  { _id: "2", title: "Coastal Bathroom Vanity", slug: "coastal-bathroom", materialType: { name: "Marble" }, serviceType: "stone", roomType: "bathroom", city: "Panama City Beach" },
+  { _id: "3", title: "Herringbone Backsplash", slug: "herringbone-backsplash", materialType: { name: "Porcelain" }, serviceType: "tile", roomType: "kitchen", city: "Lynn Haven" },
+  { _id: "4", title: "Elegant Master Bath Tile", slug: "master-bath-tile", materialType: { name: "Marble Mosaic" }, serviceType: "tile", roomType: "bathroom", city: "30A" },
+  { _id: "5", title: "Whole Home Interior Paint", slug: "whole-home-paint", materialType: { name: "Interior Paint" }, serviceType: "coating", roomType: "living room", city: "Panama City" },
+  { _id: "6", title: "Cabinet Refinishing", slug: "cabinet-refinishing", materialType: { name: "Cabinet Paint" }, serviceType: "coating", roomType: "kitchen", city: "Lynn Haven" },
+  { _id: "7", title: "LVP Open Plan Installation", slug: "lvp-open-plan", materialType: { name: "LVP" }, serviceType: "flooring", roomType: "open plan", city: "Panama City Beach" },
+  { _id: "8", title: "Garage Epoxy Floor", slug: "garage-epoxy", materialType: { name: "Epoxy" }, serviceType: "flooring", roomType: "garage", city: "Callaway" },
+];
+
+const SERVICE_FILTERS = [
+  { id: "all", label: "All" },
+  { id: "stone", label: "Stone" },
+  { id: "tile", label: "Tile" },
+  { id: "coating", label: "Coating" },
+  { id: "flooring", label: "Flooring" },
 ];
 
 interface FeaturedProjectsProps {
@@ -29,7 +45,13 @@ interface FeaturedProjectsProps {
 }
 
 export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
+  const [filter, setFilter] = useState("all");
   const displayProjects = projects && projects.length > 0 ? projects : PLACEHOLDER_PROJECTS;
+
+  const filtered = useMemo(() => {
+    if (filter === "all") return displayProjects;
+    return displayProjects.filter((p) => p.serviceType === filter);
+  }, [displayProjects, filter]);
 
   return (
     <section className="bg-warm-light py-16 sm:py-20">
@@ -39,8 +61,29 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
           title="Featured Projects"
           description="See the transformations we've delivered for Bay County homeowners."
         />
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {displayProjects.slice(0, 4).map((project, i) => (
+
+        {/* Filter Tabs */}
+        <div className="mt-8 flex justify-center">
+          <div className="flex gap-2 overflow-x-auto">
+            {SERVICE_FILTERS.map((f) => (
+              <button
+                key={f.id}
+                onClick={() => setFilter(f.id)}
+                className={cn(
+                  "rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                  filter === f.id
+                    ? "bg-navy text-white"
+                    : "bg-white text-dark hover:bg-warm-medium"
+                )}
+              >
+                {f.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {filtered.slice(0, 4).map((project, i) => (
             <AnimateInView key={project._id} delay={i * 0.1}>
               <Link
                 href={`/portfolio/${project.slug}`}
