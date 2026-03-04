@@ -25,6 +25,7 @@ import { cn } from '@/lib/utils';
 import { EdgeProfilePicker } from './EdgeProfilePicker';
 import { ShareModal } from '../shared/ShareModal';
 import { StoneImage } from '../shared/StoneImage';
+import { getStoneInstalledPrice } from '@/lib/services/price-display';
 import type { Stone } from '@/data/showroom/types';
 
 interface StoneDetailProps {
@@ -150,7 +151,10 @@ export function StoneDetail({
               {/* Price */}
               <div className="rounded-lg bg-warm-light p-3">
                 <p className="text-lg font-bold text-gold-dark">
-                  ${stone.pricePerSqFtRange[0]}–${stone.pricePerSqFtRange[1]}
+                  {(() => {
+                    const p = getStoneInstalledPrice(stone.id);
+                    return p ? `$${p.low}–$${p.high}` : `$${stone.pricePerSqFtRange[0]}–$${stone.pricePerSqFtRange[1]}`;
+                  })()}
                   <span className="text-sm font-normal text-dark/50"> /sq ft installed</span>
                 </p>
               </div>

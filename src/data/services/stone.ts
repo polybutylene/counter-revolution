@@ -7,7 +7,7 @@ export const stoneServiceConfig: ServiceConfig = {
   description:
     "Granite, quartz, and marble countertops fabricated and installed.",
   icon: "diamond",
-  priceRange: "$38–$120/sq ft installed",
+  priceRange: "$85–$155/sq ft installed",
   heroHeadline: "Premium Countertops, Transparent Pricing",
   heroSubtitle:
     "Browse materials, get an instant estimate, and schedule your free in-home measurement.",

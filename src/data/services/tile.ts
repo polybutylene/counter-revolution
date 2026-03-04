@@ -6,7 +6,7 @@ export const tileServiceConfig: ServiceConfig = {
   tagline: "Expert layout and installation",
   description: "Backsplash, shower, and floor tile — expert layout and installation.",
   icon: "grid",
-  priceRange: "$12–$45/sq ft installed",
+  priceRange: "$37–$83/sq ft installed",
   heroHeadline: "Expert Tile Installation, Transparent Pricing",
   heroSubtitle: "Browse materials, get an instant estimate, and schedule your free in-home measurement.",
   materials: [

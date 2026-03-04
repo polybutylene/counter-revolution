@@ -6,7 +6,7 @@ export const flooringServiceConfig: ServiceConfig = {
   tagline: "Installed right, every time",
   description: "Hardwood, LVP, laminate, and epoxy — installed right.",
   icon: "layers",
-  priceRange: "$6–$18/sq ft installed",
+  priceRange: "$11–$39/sq ft installed",
   heroHeadline: "Beautiful Floors, Transparent Pricing",
   heroSubtitle: "Browse options, get an instant estimate, and schedule your free in-home measurement.",
   materials: [

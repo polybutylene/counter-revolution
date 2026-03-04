@@ -6,7 +6,7 @@ export const coatingServiceConfig: ServiceConfig = {
   tagline: "Premium painting with flawless finishes",
   description: "Interior and exterior painting with premium finishes.",
   icon: "paintbrush",
-  priceRange: "$2–$6/sq ft",
+  priceRange: "Starting at $750/room",
   heroHeadline: "Premium Painting, Transparent Pricing",
   heroSubtitle: "Browse finishes, get an instant estimate, and schedule your free in-home color consultation.",
   materials: [

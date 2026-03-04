@@ -14,6 +14,7 @@ import { stones, getStoneById } from '@/data/showroom/stones';
 import { getEdgeProfileById } from '@/data/showroom/edgeProfiles';
 import { StoneImage } from '../shared/StoneImage';
 import { cn } from '@/lib/utils';
+import { getStoneInstalledPrice } from '@/lib/services/price-display';
 import type { EstimateFormData } from '@/data/showroom/types';
 
 interface EstimateBuilderProps {
@@ -87,7 +88,10 @@ export function EstimateBuilder({ initialStoneId }: EstimateBuilderProps) {
                   <div className="min-w-0">
                     <p className="text-xs font-medium text-dark truncate">{stone.name}</p>
                     <p className="text-[10px] text-dark/50">
-                      ${stone.pricePerSqFtRange[0]}–${stone.pricePerSqFtRange[1]}/ft²
+                      {(() => {
+                        const p = getStoneInstalledPrice(stone.id);
+                        return p ? `$${p.low}–$${p.high}/ft²` : `$${stone.pricePerSqFtRange[0]}–$${stone.pricePerSqFtRange[1]}/ft²`;
+                      })()}
                     </p>
                   </div>
                 </button>

@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { StoneImage } from '../shared/StoneImage';
 import { cn } from '@/lib/utils';
+import { getStoneInstalledPrice } from '@/lib/services/price-display';
 import type { Stone } from '@/data/showroom/types';
 
 interface StoneCardProps {
@@ -81,7 +82,12 @@ export function StoneCard({
         </div>
 
         <p className="mt-2 text-sm font-medium text-gold-dark">
-          ${stone.pricePerSqFtRange[0]}–${stone.pricePerSqFtRange[1]}/sq ft
+          {(() => {
+            const computed = getStoneInstalledPrice(stone.id);
+            const low = computed ? computed.low : stone.pricePerSqFtRange[0];
+            const high = computed ? computed.high : stone.pricePerSqFtRange[1];
+            return `$${low}–$${high}/sq ft`;
+          })()}
           <span className="font-normal text-dark/50"> installed</span>
         </p>
 
